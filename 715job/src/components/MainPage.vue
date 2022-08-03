@@ -1,6 +1,6 @@
 <template>
   <div class="text-center">
-    <h1 id="aaa">aaa</h1>
+    <h1 id="yd-desktop">이건 내 데스크탑에서 새로 작업해서 올린 거</h1>
     <h1 class="yd-notebook">이건 내 노트북에서 새로 작업해서 올린 거</h1>
   </div>
 </template>
