@@ -2,24 +2,36 @@
   <v-app>
     <v-app-bar app color="transparent" elevation="0" height="96px">
       <div class="d-flex align-center">
-        <v-img alt="Vuetify Name" class="shrink hidden-sm-and-down" contain
-          min-width="100" src="./assets/715Job-white.png" width="150" />
+        <v-img
+          alt="Vuetify Name"
+          class="shrink hidden-sm-and-down"
+          contain
+          min-width="100"
+          src="./assets/715Job-white.png"
+          width="150"
+        />
       </div>
       <v-spacer></v-spacer>
-      <v-btn class="mr-4" href="#" dark color="#002448"
-        height="45px" width="100px" style="border-radius:15px;">
+      <v-btn
+        class="mr-4"
+        href="#"
+        dark
+        color="#002448"
+        height="45px"
+        width="100px"
+        style="border-radius: 15px"
+      >
         <span>Login</span>
       </v-btn>
     </v-app-bar>
     <div class="main-background"></div>
     <v-main>
-      <router-view/>
+      <router-view />
     </v-main>
   </v-app>
 </template>
 
 <script>
-
 export default {
   name: 'App',
 
@@ -30,5 +42,5 @@ export default {
 </script>
 
 <style>
-  @import './css/index.css';
+@import './css/index.css';
 </style>
