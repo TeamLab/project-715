@@ -22,7 +22,7 @@
             <li>|</li>
             <li><a href="#">비밀번호 찾기</a></li>
             <li>|</li>
-            <li><a href="#">회원가입</a></li>
+            <li><router-link to="/user/signup">회원가입</router-link></li>
           </ul>
         </div>
       </div>
@@ -59,8 +59,7 @@ a:visited {
   color: black;
 }
 .body {
-  width: 1960px;
-  height: 1060px;
+  margin: 0px;
 }
 .main {
   width: 900px;
