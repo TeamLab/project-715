@@ -4,7 +4,6 @@
     <MainPage />
     <MainCalendar />
   </div>
-
 </template>
 
 <script>
