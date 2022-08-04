@@ -66,8 +66,6 @@ a:visited {
   width: 900px;
   height: 900px;
   margin: auto;
-  border-right: 1px solid black;
-  border-left: 1px solid black;
 }
 .loginHead {
   font-size: 24px;
