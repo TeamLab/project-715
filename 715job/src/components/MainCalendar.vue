@@ -123,9 +123,10 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
 .main-calendar {
-  width:1000px;
+  width:70%;
+  max-width: 900px;
   margin: auto;
 }
 </style>
