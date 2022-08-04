@@ -37,6 +37,11 @@ const routes = [
     path: '/user/findpwd',
     name: 'FindPwdView',
     component: () => import(/* webpackChunkName: "login", webpackPrefetch:true */ '../views/user/FindPwdView.vue')
+  },
+  {
+    path: '/mypage/rsvinfo',
+    name: 'MyRsvInfoView',
+    component: () => import(/* webpackChunkName: "login", webpackPrefetch:true */ '../views/mypage/MyRsvInfoView.vue')
   }
 ]
 
