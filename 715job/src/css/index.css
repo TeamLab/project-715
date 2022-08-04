@@ -1,6 +1,7 @@
-#yd-desktop {
-  color: red;
-}
-.yd-notebook {
-  color: blue;
+/* App.vue */
+.main-background {
+  position:absolute;
+  background-color: #769FCD;
+  width: 100%;
+  height: 850px;
 }
