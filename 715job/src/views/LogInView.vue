@@ -18,9 +18,9 @@
         </div>
         <div class="findButtons">
           <ul class="findButtonLists">
-            <li><a href="#">아이디 찾기</a></li>
+            <li><router-link to="/user/findid">아이디 찾기</router-link></li>
             <li>|</li>
-            <li><a href="#">비밀번호 찾기</a></li>
+            <li><router-link to="/user/findpwd">비밀번호 찾기</router-link></li>
             <li>|</li>
             <li><router-link to="/user/signup">회원가입</router-link></li>
           </ul>
