@@ -19,6 +19,26 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
   },
   {
+    path: '/login',
+    name: 'LogInView',
+    component: () => import(/* webpackChunkName: "login", webpackPrefetch:true */ '../views/LogInView.vue')
+  },
+  {
+    path: '/user/signup',
+    name: 'SignUpView',
+    component: () => import(/* webpackChunkName: "login", webpackPrefetch:true */ '../views/user/SignUpView.vue')
+  },
+  {
+    path: '/user/findid',
+    name: 'FindIdView',
+    component: () => import(/* webpackChunkName: "login", webpackPrefetch:true */ '../views/user/FindIdView.vue')
+  },
+  {
+    path: '/user/findpwd',
+    name: 'FindPwdView',
+    component: () => import(/* webpackChunkName: "login", webpackPrefetch:true */ '../views/user/FindPwdView.vue')
+  },
+  {
     path: '/mypage/rsvinfo',
     name: 'MyRsvInfoView',
     component: () => import(/* webpackChunkName: "login", webpackPrefetch:true */ '../views/mypage/MyRsvInfoView.vue')
