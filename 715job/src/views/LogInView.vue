@@ -9,7 +9,7 @@
         </div>
         <div class="passwordBox">
           <p>비밀번호</p>
-          <input type="text" />
+          <input type="password" />
         </div>
         <div class="loginButton">
           <form action="">
