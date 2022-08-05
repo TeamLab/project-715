@@ -3,19 +3,21 @@
     <div class="main">
       <div class="loginHead">로그인</div>
       <div class="loginContents">
-        <div class="idBox">
-          <p>아이디</p>
-          <input type="text" />
-        </div>
-        <div class="passwordBox">
-          <p>비밀번호</p>
-          <input type="text" />
-        </div>
-        <div class="loginButton">
-          <form action="">
-            <button>로그인</button>
-          </form>
-        </div>
+        <form action="" method=”post” enctype=”multipart/form-data”>
+          <div class="idBox">
+            <v-text-field class="v_text_input" label="아이디"></v-text-field>
+          </div>
+          <div class="passwordBox">
+            <v-text-field
+              class="v_text_input"
+              label="비밀번호"
+              type="password"
+            ></v-text-field>
+          </div>
+          <div class="loginButton">
+            <input type="submit" value="로그인">
+          </div>
+        </form>
         <div class="findButtons">
           <ul class="findButtonLists">
             <li><router-link to="/user/findid">아이디 찾기</router-link></li>
@@ -52,9 +54,7 @@ export default {
   color: #000;
   list-style: none;
 }
-a:link {
-  color: black;
-}
+a:link,
 a:visited {
   color: black;
 }
@@ -62,6 +62,9 @@ a:visited {
   width: 900px;
   height: 900px;
   margin: auto;
+}
+.v_text_input {
+  font-size: 20px;
 }
 .loginHead {
   font-size: 24px;
@@ -75,16 +78,10 @@ a:visited {
   border-top: 1px solid #cccccc;
   text-align: center;
 }
-.idBox > p {
-  font-size: 24px;
-}
-.passwordBox > p {
-  font-size: 24px;
-}
 .loginContents {
   margin-top: 98px;
 }
-.loginContents > .idBox,
+.loginContents > form > .idBox,
 .passwordBox,
 .loginButton {
   margin: auto;
@@ -98,20 +95,12 @@ a:visited {
   width: 388px;
   height: 96px;
 }
-.loginContents > div > input {
-  width: 388px;
-  height: 47px;
-  border-radius: 2px;
-  font-size: 20px;
-  padding-left: 5px;
-  background-color: #d9d9d9;
-}
-.loginButton > form > button {
+.loginButton > input {
   width: 388px;
   height: 70px;
   font-size: 24px;
-  background-color: #63acfd;
   border-radius: 2px;
+  background-color: #658ef8;
 }
 .findButtons > .findButtonLists {
   display: flex;
