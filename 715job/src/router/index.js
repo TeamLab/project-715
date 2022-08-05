@@ -39,6 +39,11 @@ const routes = [
     path: '/mypage/rsvinfo',
     name: 'MyRsvInfoView',
     component: () => import(/* webpackChunkName: "login", webpackPrefetch:true */ '../views/mypage/MyRsvInfoView.vue')
+  },
+  {
+    path: '/mypage/psninfo',
+    name: 'PersonalInfoView',
+    component: () => import(/* webpackChunkName: "login", webpackPrefetch:true */ '../views/mypage/PersonalInfoView.vue')
   }
 ]
 
