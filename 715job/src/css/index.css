@@ -1,7 +1,19 @@
+/* All Files Font */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@1,700&display=swap');
+
+
 /* App.vue */
 .main-background {
   position: absolute;
   background-color: #769fcd;
   width: 100%;
   height: 850px;
+  transition-duration: 0.5s;
+}
+.not-main-background {
+  position: absolute;
+  background-color: transparent;
+  width: 100%;
+  height: 850px;
+  transition-duration: 0.5s;
 }

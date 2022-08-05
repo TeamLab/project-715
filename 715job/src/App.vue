@@ -22,13 +22,13 @@
           color="#002448"
           height="45px"
           width="100px"
-          style="border-radius: 15px"
+          :style='{"border-radius": "15px", "font-family": "Fira Sans"}'
         >
           <span>Login</span>
         </v-btn>
       </router-link>
     </v-app-bar>
-    <div class="main-background"></div>
+    <div :class="{ 'main-background': isMain, 'not-main-background': isNotMain }"></div>
     <v-main>
       <router-view />
     </v-main>
@@ -39,9 +39,24 @@
 export default {
   name: 'App',
 
-  data: () => ({
-    //
-  })
+  data() {
+    return {
+      isMain: true,
+      isNotMain: false
+    }
+  },
+  methods: {},
+  watch: {
+    '$route' (to, from) {
+      if (to.path !== '/' && from.path === '/') {
+        this.isMain = false
+        this.isNotMain = true
+      } else if (to.path === '/' && from.path !== '/') {
+        this.isMain = true
+        this.isNotMain = false
+      }
+    }
+  }
 }
 </script>
 
