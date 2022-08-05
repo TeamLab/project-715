@@ -53,6 +53,7 @@
     <div>
       <v-sheet height="600">
       <v-calendar
+        title-position="left"
         ref="calendar"
         v-model="value"
         :weekdays="weekday"

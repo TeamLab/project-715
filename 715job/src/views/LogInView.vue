@@ -4,12 +4,12 @@
       <div class="loginHead">로그인</div>
       <div class="loginContents">
         <div class="idBox">
-          <p>아이디</p>
-          <input type="text" />
+          <!-- <p>아이디</p> -->
+          <v-text-field label="ID"></v-text-field>
         </div>
         <div class="passwordBox">
-          <p>비밀번호</p>
-          <input type="password" />
+          <!-- <p>비밀번호</p> -->
+          <v-text-field label="Password"></v-text-field>
         </div>
         <div class="loginButton">
           <form action="">
@@ -98,14 +98,14 @@ a:visited {
   width: 388px;
   height: 96px;
 }
-.loginContents > div > input {
+/* .loginContents > div > input {
   width: 388px;
   height: 47px;
   border-radius: 2px;
   font-size: 20px;
   padding-left: 5px;
   background-color: #d9d9d9;
-}
+} */
 .loginButton > form > button {
   width: 388px;
   height: 70px;
