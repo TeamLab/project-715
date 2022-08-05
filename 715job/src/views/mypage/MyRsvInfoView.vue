@@ -20,18 +20,18 @@
           <ul class="right-box-rsvinfo-table">
             <li class="right-box-rsvinfo">&nbsp;&nbsp;예약 정보</li>
             <div class="right-box-rsvinfo-box">
-            <li class="right-box-detail-rsvinfo">2022.08.22 15:00 1번 테이블 예약 3인
-              <button class="change-rsv" v-on:click="openNew">수정</button>
-            <button class="change-delete" v-on:click="openNew">삭제</button>
-            </li>
-            <li class="right-box-detail-rsvinfo">2022.08.27 17:00 4번 테이블 예약 2인
-            <button class="change-rsv" v-on:click="openNew">수정</button>
-            <button class="change-delete" v-on:click="openNew">삭제</button>
-            </li>
-            <li class="right-box-detail-rsvinfo">2022.09.04 09:00 3번 테이블 예약 3인
-            <button class="change-rsv" v-on:click="openNew">수정</button>
-            <button class="change-delete" v-on:click="openNew">삭제</button>
-            </li>
+              <li class="right-box-detail-rsvinfo">2022.08.22 15:00 1번 테이블 예약 3인
+                <button class="change-rsv" v-on:click="openNew">수정</button>
+                <button class="change-delete" v-on:click="openNew">삭제</button>
+              </li>
+              <li class="right-box-detail-rsvinfo">2022.08.27 17:00 4번 테이블 예약 2인
+                <button class="change-rsv" v-on:click="openNew">수정</button>
+                <button class="change-delete" v-on:click="openNew">삭제</button>
+              </li>
+              <li class="right-box-detail-rsvinfo">2022.09.04 09:00 3번 테이블 예약 3인
+                <button class="change-rsv" v-on:click="openNew">수정</button>
+                <button class="change-delete" v-on:click="openNew">삭제</button>
+              </li>
             </div>
           </ul>
         </div>
