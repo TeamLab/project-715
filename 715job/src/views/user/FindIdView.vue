@@ -1,34 +1,45 @@
 <template>
   <div class="body">
     <div class="main">
-      <div class="findLogInHead">
+      <div class="findIdHead">
         <p><strong>아이디 찾기</strong></p>
       </div>
       <div class="findContainer">
         <div class="findButton">
-          <button id="findIdButton">아이디 찾기</button>
+          <router-link to="/user/findid">
+        <v-btn outlined
+        id="findIdButton"
+          outlinedcolor="black"
+        >
+          아이디 찾기
+        </v-btn>
+        </router-link>
         </div>
         <div class="findButton">
-          <button id="findPwButton">비밀번호 찾기</button>
+          <router-link to="/user/findpwd">
+        <v-btn
+        id="findPwdButton"
+          color="#F1F1F1"
+        >
+          비밀번호 찾기
+        </v-btn>
+        </router-link>
         </div>
       </div>
-      <div class="findIdInfo">
-        <div class="studentNumberBox">
-          <p>학번</p>
-          <input type="text" />
+      <form action="" method=”post” enctype=”multipart/form-data”>
+        <div class="studentInfoBox">
+          <v-text-field class="v_text_input" label="학번"></v-text-field>
         </div>
-        <div class="studentNameBox">
-          <p>이름</p>
-          <input type="text" />
+        <div class="studentInfoBox">
+          <v-text-field class="v_text_input" label="이름"></v-text-field>
         </div>
         <div class="findIdForm">
-          <form action="">
-            <button>아이디 찾기</button>
-          </form>
+          <router-link id="toFindIdResult" to="/user/findidresult"
+            ><input type="submit" value="아이디 찾기"
+          /></router-link>
         </div>
-      </div>
+      </form>
     </div>
-    <div class="footer">footer</div>
   </div>
 </template>
 <script>
@@ -48,90 +59,72 @@ export default {
 </script>
 
 <style scoped>
-* {
-  text-decoration: none;
-  color: #000;
-  list-style: none;
-}
-a:link {
-  color: black;
-}
-a:visited {
-  color: black;
+.body {
+  margin: 0;
 }
 .main {
   width: 900px;
-  height: 900px;
   margin: auto;
 }
-.findLogInHead {
+.v_text_input {
+  font-size: 20px;
+}
+.findIdHead > p {
+  text-align: center;
   font-size: 24px;
-  width: 198px;
-  height: 48px;
-  margin: auto;
-  text-align: center;
-  padding-top: 123px;
-}
-.footer {
-  border-top: 1px solid #cccccc;
-  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 .findContainer {
   display: flex;
   width: 388px;
   margin: auto;
-  padding-top: 50px;
 }
 .findContainer > .findButton {
   flex: 1;
   text-align: center;
   padding-top: 50px;
 }
-.findContainer > .findButton > button {
+.findContainer > .findButton > a{
+  text-decoration: none;
+}
+.findContainer > .findButton > a > #findIdButton{
   width: 100%;
   height: 50px;
-  border: 1px solid black;
   font-size: 22px;
 }
-.studentNumberBox > p {
+.findContainer > .findButton > a > #findPwdButton{
+  width: 100%;
+  height: 50px;
+  font-size: 22px;
+}
+.studentInfoBox {
+  padding-top: 50px;
+}
+.studentInfoBox > #studentHead {
   font-size: 24px;
 }
-.studentNameBox > p {
-  font-size: 24px;
-}
-.findIdInfo {
-  margin-top: 70px;
-}
-.findIdInfo > .studentNumberBox,
-.studentNameBox,
-.findIdForm {
-  margin: auto;
-  margin-top: 34.91px;
-  width: 388px;
-  height: 96px;
-}
-.findButtons {
-  margin: auto;
-  margin-top: 10px;
-  width: 388px;
-  height: 96px;
-}
-.findIdInfo > div > input {
+.studentInfoBox > .v_text_input {
   width: 388px;
   height: 47px;
   border-radius: 2px;
-  font-size: 20px;
   padding-left: 5px;
-  background-color: #d9d9d9;
+  font-size: 20px;
+  margin: auto;
 }
 .findIdForm {
-  padding-top: 30px;
+  padding-top: 100px;
+  text-align: center;
 }
-.findIdForm > form > button {
+.findIdForm > #toFindIdResult {
+  text-decoration: none;
+  color: black;
+}
+.findIdForm > #toFindIdResult > input {
   width: 388px;
   height: 70px;
   font-size: 24px;
-  background-color: #f1f1f1;
   border-radius: 2px;
+  background-color: #658ef8;
 }
 </style>
