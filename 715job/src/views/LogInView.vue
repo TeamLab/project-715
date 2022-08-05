@@ -98,14 +98,14 @@ a:visited {
   width: 388px;
   height: 96px;
 }
-/* .loginContents > div > input {
+.loginContents > div > input {
   width: 388px;
   height: 47px;
   border-radius: 2px;
   font-size: 20px;
   padding-left: 5px;
   background-color: #d9d9d9;
-} */
+}
 .loginButton > form > button {
   width: 388px;
   height: 70px;
