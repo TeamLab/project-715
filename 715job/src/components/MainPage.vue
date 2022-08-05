@@ -8,6 +8,7 @@
         height="60px"
         color="#002448"
         class="booknow-button"
+        @click="onEmit"
         :style="{ 'font-size': '19px' }"
         >
         Book now
@@ -18,17 +19,22 @@
 
 <script>
 export default {
+  name: 'MainPage',
   components: {},
   data() {
     return {
-      sampleData: ''
+      isBooking: true
     }
   },
   setup() {},
   created() {},
   mounted() {},
   unmounted() {},
-  methods: {}
+  methods: {
+    onEmit() {
+      this.$emit('setBooking', this.isBooking)
+    }
+  }
 }
 </script>
 
