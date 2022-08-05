@@ -11,10 +11,16 @@
         <input type="text" />
       </div>
       <div class="forgetPwd">
-        <span><p>비밀번호가 기억나지 않으세요?</p></span>
-        <span><router-link to="/user/findpwd">비밀번호 찾기</router-link></span>
+        <span id="forgetPwd"><p>비밀번호가 기억나지 않으세요?</p></span>
+        <span id="findPwd"
+          ><router-link to="/user/findpwd">비밀번호 찾기</router-link></span
+        >
       </div>
-      <div></div>
+      <div class="loginButton">
+        <form action="">
+          <button>로그인</button>
+        </form>
+      </div>
     </div>
   </div>
 </template>
@@ -35,25 +41,15 @@ export default {
 </script>
 
 <style scoped>
-.body {
-  margin: 0;
-}
 .main {
   width: 900px;
   margin: auto;
 }
-.findIdResultHead {
-  background-color: beige;
-}
-
 .findIdResultHead > p {
   text-align: center;
   font-size: 24px;
   padding-top: 50px;
   padding-bottom: 50px;
-}
-.resultComment {
-  background-color: aquamarine;
 }
 .resultComment > p {
   text-align: center;
@@ -61,13 +57,35 @@ export default {
   padding-top: 70px;
 }
 .resultIdInfo {
-  background-color: antiquewhite;
-  margin-top: 50px;
+  width: 388px;
+  margin: auto;
+  margin-top: 75px;
 }
 .resultIdInfo > input {
   width: 100%;
-  height: 81px;
+  height: 47px;
   padding-left: 5px;
   font-size: 24px;
+  border-radius: 2px;
+  background-color: #d9d9d9;
+}
+.forgetPwd {
+  width: 388px;
+  padding-top: 75px;
+  display: flex;
+  margin: auto;
+}
+.forgetPwd > #forgetPwd {
+  margin-right: 5px;
+}
+.loginButton {
+  text-align: center;
+}
+.loginButton > form > button {
+  width: 388px;
+  height: 70px;
+  font-size: 24px;
+  background-color: #658ef8;
+  border-radius: 2px;
 }
 </style>
