@@ -39,8 +39,8 @@
       <div class="passwordInfo">
         <div class="infoBox">
           <p>비밀번호</p>
-          <input type="text" />
-          <input type="text" />
+          <input type="password" />
+          <input type="password" />
         </div>
       </div>
       <div class="passwordVerify">

@@ -9,7 +9,7 @@
         </div>
         <div class="passwordBox">
           <p>비밀번호</p>
-          <input type="text" />
+          <input type="password" />
         </div>
         <div class="loginButton">
           <form action="">
@@ -58,9 +58,6 @@ a:link {
 a:visited {
   color: black;
 }
-.body {
-  margin: 0px;
-}
 .main {
   width: 900px;
   height: 900px;
@@ -75,9 +72,8 @@ a:visited {
   padding-top: 123px;
 }
 .footer {
-  width: 1960px;
-  height: 160px;
   border-top: 1px solid #cccccc;
+  text-align: center;
 }
 .idBox > p {
   font-size: 24px;
@@ -112,7 +108,7 @@ a:visited {
 }
 .loginButton > form > button {
   width: 388px;
-  height: 96px;
+  height: 70px;
   font-size: 24px;
   background-color: #63acfd;
   border-radius: 2px;
