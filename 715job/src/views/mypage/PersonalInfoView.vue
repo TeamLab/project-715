@@ -156,7 +156,7 @@ export default {
   align-items: center;
 }
 .right-box-psninfo-box{
-  background-color: rgb(49, 49, 152));
+  background-color: rgb(49, 49, 152);
   width:90%;
   height:300px;
   border:solid rgb(133, 214, 255);

@@ -152,7 +152,7 @@ export default {
   border-bottom: solid rgb(189, 189, 189);
 }
 .right-box-rsvinfo-box{
-  background-color: rgb(49, 49, 152));
+  background-color: rgb(49, 49, 152);
   width:90%;
   height:300px;
   border:solid rgb(133, 214, 255);
