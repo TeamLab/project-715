@@ -7,17 +7,18 @@
                     align="center"
                     justify="space-around"
                 >
-                <router-link to="/mypage/psninfo">
-                    <v-btn
-                        class="mr-4"
-                        color="#ffffff"
-                        height="45px"
-                        width="130px"
-                        :style='{"border-radius": "15px", "border":"1px solid #002448", "font-family": "Fira Sans", "color":"#002448"}'
-                    >
-                        예약 확인하기
-                    </v-btn>
-                </router-link>
+                <div class="btn-row">
+                    <router-link to="/mypage/psninfo">
+                        <v-btn
+                            class="mr-4"
+                            color="#ffffff"
+                            height="45px"
+                            width="130px"
+                            :style='{"border-radius": "15px", "border":"1px solid #002448", "font-family": "Fira Sans", "color":"#002448"}'
+                        >
+                            예약 확인하기
+                        </v-btn>
+                    </router-link>
                     <router-link to="/">
                         <v-btn
                             class="mr-4"
@@ -30,6 +31,7 @@
                         다른 예약하기
                         </v-btn>
                     </router-link>
+                </div>
                 </v-row>
             </div>
         </div>
@@ -55,10 +57,15 @@ export default {
 }
 #rsv-complete-ment{
     text-align: center;
-    font-size: 24px;
+    font-size: 30px;
     padding-top: 40px;
 }
 .rsv-move-btn{
     padding-top:10%;
+}
+.btn-row{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 </style>
