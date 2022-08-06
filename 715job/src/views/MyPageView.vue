@@ -7,7 +7,7 @@
         <p class="my-name">황부현</p>
         <div id="select-info">
           <div class="select-info" id="select-rsvinfo"><button @click="setMyRsvInfo">예약 정보</button></div>
-          <div class="select-info" id="select-profileinfo"><button @click="setPersonalInfo">개인 정보 수정</button></div>
+          <div class="select-info" id="select-profileinfo"><button @click="setPersonalInfo">개인 정보</button></div>
         </div>
       </div>
     </div>

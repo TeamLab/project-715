@@ -4,7 +4,7 @@
     <p class="greet-user">황부현님, 안녕하세요</p>
     <div class="psninfo">
       <div class="right-box-psninfo-table">
-        <li class="right-box-psninfo">&nbsp;&nbsp;개인 정보 수정</li>
+        <li class="right-box-psninfo">&nbsp;&nbsp;개인 정보</li>
         <div class="right-box-psninfo-box">
           <form>
             <v-select
@@ -16,6 +16,8 @@
             ></v-select>
 
             <v-text-field
+              value="hwangbh8@gmail.com"
+              readonly
               :rules="emailRule"
               label="E-mail"
               required
@@ -66,6 +68,7 @@ export default {
       }
     ]
   })
+
 }
 </script>
 <style scoped>

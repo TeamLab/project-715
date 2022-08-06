@@ -36,16 +36,6 @@ const routes = [
     component: () => import(/* webpackChunkName: "user", webpackPrefetch:true */ '../views/user/FindIdResultView.vue')
   },
   {
-    path: '/mypage/rsvinfo',
-    name: 'MyRsvInfoView',
-    component: () => import(/* webpackChunkName: "mypage", webpackPrefetch:true */ '../views/mypage/MyRsvInfoView.vue')
-  },
-  {
-    path: '/mypage/psninfo',
-    name: 'PersonalInfoView',
-    component: () => import(/* webpackChunkName: "mypage", webpackPrefetch:true */ '../views/mypage/PersonalInfoView.vue')
-  },
-  {
     path: '/mypage',
     name: 'MyPageView',
     component: () => import(/* webpackChunkName: "mypage" */ '../views/MyPageView.vue')
