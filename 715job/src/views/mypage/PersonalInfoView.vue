@@ -5,7 +5,6 @@
         <div class="left-box-inner">
           <div class="left-box-profile">
             <img class="guest-img" src="@/assets/guest-img.png" alt="guest">
-            <font-awesome-icon class="guest-img" icon="fa-solid fa-circle-user" />
             <p class="my-name">황부현</p>
             <div id="select-info">
               <div class="select-info" id="select-rsvinfo"><router-link to="/mypage/rsvinfo">예약 정보</router-link></div>
@@ -182,8 +181,6 @@ export default {
   width:90%;
   height:350px;
   border:solid rgb(133, 214, 255);
-}
-.change-grade{
 }
 .change-psn-info{
   border:solid gray;

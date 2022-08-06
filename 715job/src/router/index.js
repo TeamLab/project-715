@@ -44,6 +44,11 @@ const routes = [
     path: '/mypage/psninfo',
     name: 'PersonalInfoView',
     component: () => import(/* webpackChunkName: "login", webpackPrefetch:true */ '../views/mypage/PersonalInfoView.vue')
+  },
+  {
+    path: '/rsvcomplete',
+    name: 'ReservationComplete',
+    component: () => import(/* webpackChunkName: "login", webpackPrefetch:true */ '../views/RsvCompleteView.vue')
   }
 ]
 
