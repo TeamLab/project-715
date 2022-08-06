@@ -1,5 +1,8 @@
 <template>
-  <v-row class="fill-height main-calendar">
+  <v-col class="fill-height main-calendar">
+    <v-col class="rsv-text">
+      <h1>예약일자 선택</h1>
+    </v-col>
     <v-col>
       <v-sheet height="64">
         <v-toolbar flat>
@@ -55,7 +58,7 @@
         ></v-calendar>
       </v-sheet>
     </v-col>
-  </v-row>
+  </v-col>
 </template>
 
 <script>
@@ -73,6 +76,11 @@ export default {
       }
     }
   },
+  watch: {
+    focus() {
+      console.log(this.focus) // 이걸 아래 예약일자 input에 자동 입력 // 이 부분에서 새로운거 나오기 시작
+    }
+  },
   methods: {
     setToday () {
       this.focus = ''
@@ -82,6 +90,7 @@ export default {
     },
     next () {
       this.$refs.calendar.next()
+      console.log(this.$refs.calendar)
     }
   }
 }
@@ -91,7 +100,11 @@ export default {
   width:70%;
   max-width: 900px;
   margin: auto;
-  padding-top: 96px;
+  padding-top: 48px;
   margin-bottom: 96px;
+}
+.rsv-text {
+  text-align: center;
+  padding: 0;
 }
 </style>
