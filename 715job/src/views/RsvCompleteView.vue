@@ -8,7 +8,7 @@
                     justify="space-around"
                 >
                 <div class="btn-row">
-                    <router-link to="/mypage/psninfo">
+                    <router-link to="/mypage">
                         <v-btn
                             class="mr-4"
                             color="#ffffff"
