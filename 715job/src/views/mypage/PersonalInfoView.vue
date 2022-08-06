@@ -5,10 +5,11 @@
         <div class="left-box-inner">
           <div class="left-box-profile">
             <img class="guest-img" src="@/assets/guest-img.png" alt="guest">
+            <font-awesome-icon class="guest-img" icon="fa-solid fa-circle-user" />
             <p class="my-name">황부현</p>
             <div id="select-info">
-              <div class="select-info" id="select-rsvinfo"><a href="#">예약 정보</a></div>
-              <div class="select-info" id="select-profileinfo"><a href="#">개인 정보 수정</a></div>
+              <div class="select-info" id="select-rsvinfo"><router-link to="/mypage/rsvinfo">예약 정보</router-link></div>
+              <div class="select-info" id="select-profileinfo"><router-link to="/mypage/psninfo">개인 정보 수정</router-link></div>
             </div>
           </div>
         </div>
@@ -20,30 +21,49 @@
           <div class="right-box-psninfo-table">
             <li class="right-box-psninfo">&nbsp;&nbsp;개인 정보 수정</li>
             <div class="right-box-psninfo-box">
-              <div class="grade">
-                <div class="change">학위 변경</div>
-                <div class="change-grade-button-set">
-                <button class="change-psn-info" v-on:click="openNew">학사</button>
-                <button class="change-psn-info" v-on:click="openNew">석사</button>
-                <button class="change-psn-info" v-on:click="openNew">교수</button>
-                </div>
-              </div>
-              <div class="e-mail">
-                <div class="change">e-mail 수정</div>
-                <input class="input-text" v-model="message" placeholder="여기를 수정해보세요">
-              </div>
-              <div class="password">
-                <div class="change">비밀번호 변경</div>
-                <input class="input-text" v-model="message" placeholder="여기를 수정해보세요">
-              </div>
-              <div class="password-check">
-                <div class="change">비밀번호 변경 확인</div>
-                <input class="input-text" v-model="message" placeholder="여기를 수정해보세요">
-              </div>
-              <div class="check">
-                <button class="cancle" v-on:click="openNew">취소</button>
-                <button class="final-change" v-on:click="openNew">변경</button>
-              </div>
+              <form>
+                <v-select
+                  :items="items"
+                  label="학위 변경"
+                  dense
+                  outlined
+                  :style='{"padding-top":"20px", "padding-left":"20px", "padding-right":"20px"}'
+                ></v-select>
+
+                <v-text-field
+                  v-model="email"
+                  :rules="emailRules"
+                  label="E-mail"
+                  required
+                  :style='{"padding-left":"20px", "padding-right":"20px"}'
+                ></v-text-field>
+
+                <v-text-field
+                  class="password-input"
+                  label="비밀번호 변경"
+                  type="password"
+                  :style='{"padding-left":"20px", "padding-right":"20px"}'
+                ></v-text-field>
+
+                <v-text-field
+                  class="password-input"
+                  label="비밀번호 변경 확인"
+                  type="password"
+                  :style='{"padding-left":"20px", "padding-right":"20px"}'
+                ></v-text-field>
+
+                <v-btn
+                  @click="submit"
+                  class="mr-4"
+                  dark
+                  color="#002448"
+                  height="45px"
+                  width="100px"
+                  :style='{"border-radius": "15px", "font-family": "Fira Sans", "float":"right"}'
+                >
+                  submit
+                </v-btn>
+              </form>
             </div>
           </div>
         </div>
@@ -54,7 +74,9 @@
 
 <script>
 export default {
-
+  data: () => ({
+    items: ['학사', '석사', '교수']
+  })
 }
 </script>
 <style scoped>
@@ -156,9 +178,9 @@ export default {
   align-items: center;
 }
 .right-box-psninfo-box{
-  background-color: rgb(49, 49, 152);
+  background-color: rgb(255, 255, 255);
   width:90%;
-  height:300px;
+  height:350px;
   border:solid rgb(133, 214, 255);
 }
 .change-grade{

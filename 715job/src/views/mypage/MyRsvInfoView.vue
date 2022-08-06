@@ -7,8 +7,8 @@
             <img class="guest-img" src="@/assets/guest-img.png" alt="guest">
             <p class="my-name">황부현</p>
             <div id="select-info">
-              <div class="select-info" id="select-rsvinfo"><a href="#">예약 정보</a></div>
-              <div class="select-info" id="select-profileinfo"><a href="#">개인 정보 수정</a></div>
+              <div class="select-info" id="select-rsvinfo"><router-link to="/mypage/rsvinfo">예약 정보</router-link></div>
+              <div class="select-info" id="select-profileinfo"><router-link to="/mypage/psninfo">개인 정보 수정</router-link></div>
             </div>
           </div>
         </div>
@@ -42,6 +42,14 @@
 
 <script>
 export default {
+  data: () => ({
+    selectedItem: 1,
+    items: [
+      { text: 'Real-Time', icon: 'mdi-clock' },
+      { text: 'Audience', icon: 'mdi-account' },
+      { text: 'Conversions', icon: 'mdi-flag' }
+    ]
+  })
 }
 </script>
 <style scoped>
@@ -152,7 +160,6 @@ export default {
   border-bottom: solid rgb(189, 189, 189);
 }
 .right-box-rsvinfo-box{
-  background-color: rgb(49, 49, 152);
   width:90%;
   height:300px;
   border:solid rgb(133, 214, 255);
