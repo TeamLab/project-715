@@ -1,12 +1,16 @@
 <template>
   <div>
     <MainPage @setBooking="setInput"/>
-    <MainCalendar :showCalendar="isBooking" />
+    <MainContents v-if="!isBooking"/>
+    <div ref="MainCalendar">
+      <MainCalendar v-if="isBooking"/>
+    </div>
   </div>
 </template>
 
 <script>
 import MainPage from '../components/MainPage'
+import MainContents from '../components/MainContents'
 import MainCalendar from '../components/MainCalendar'
 
 export default {
@@ -18,12 +22,13 @@ export default {
   },
   components: {
     MainPage,
-    MainCalendar
+    MainCalendar,
+    MainContents
   },
   methods: {
     setInput(isBooking) {
       this.isBooking = isBooking
-      console.log(isBooking)
+      window.scrollTo({ top: this.$refs.MainCalendar.offsetTop, behavior: 'smooth' })
     }
   }
 }
