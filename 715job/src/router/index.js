@@ -18,32 +18,27 @@ const routes = [
   {
     path: '/user/signup',
     name: 'SignUpView',
-    component: () => import(/* webpackChunkName: "login", webpackPrefetch:true */ '../views/user/SignUpView.vue')
+    component: () => import(/* webpackChunkName: "user" */ '../views/user/SignUpView.vue')
   },
   {
     path: '/user/findid',
     name: 'FindIdView',
-    component: () => import(/* webpackChunkName: "login", webpackPrefetch:true */ '../views/user/FindIdView.vue')
+    component: () => import(/* webpackChunkName: "user"  */ '../views/user/FindIdView.vue')
   },
   {
     path: '/user/findpwd',
     name: 'FindPwdView',
-    component: () => import(/* webpackChunkName: "login", webpackPrefetch:true */ '../views/user/FindPwdView.vue')
+    component: () => import(/* webpackChunkName: "user" */ '../views/user/FindPwdView.vue')
   },
   {
     path: '/user/findidresult',
     name: 'FindIdResultView',
-    component: () => import(/* webpackChunkName: "login", webpackPrefetch:true */ '../views/user/FindIdResultView.vue')
+    component: () => import(/* webpackChunkName: "user", webpackPrefetch:true */ '../views/user/FindIdResultView.vue')
   },
   {
-    path: '/mypage/rsvinfo',
-    name: 'MyRsvInfoView',
-    component: () => import(/* webpackChunkName: "login", webpackPrefetch:true */ '../views/mypage/MyRsvInfoView.vue')
-  },
-  {
-    path: '/mypage/psninfo',
-    name: 'PersonalInfoView',
-    component: () => import(/* webpackChunkName: "login", webpackPrefetch:true */ '../views/mypage/PersonalInfoView.vue')
+    path: '/mypage',
+    name: 'MyPageView',
+    component: () => import(/* webpackChunkName: "mypage" */ '../views/MyPageView.vue')
   }
 ]
 
