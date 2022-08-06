@@ -58,11 +58,16 @@
         ></v-calendar>
       </v-sheet>
     </v-col>
+    <v-col class="dummy-for-floorplan" v-if="!hideDummy"></v-col>
   </v-col>
 </template>
 
 <script>
 export default {
+  name: 'MainCalendar',
+  props: {
+    hideDummy: Boolean
+  },
   data () {
     return {
       isBooking: false,
@@ -78,7 +83,7 @@ export default {
   },
   watch: {
     focus() {
-      console.log(this.focus) // 이걸 아래 예약일자 input에 자동 입력 // 이 부분에서 새로운거 나오기 시작
+      this.$emit('isPicked', true)
     }
   },
   methods: {
@@ -95,16 +100,20 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style>
 .main-calendar {
   width:70%;
   max-width: 900px;
   margin: auto;
+  padding: 0;
   padding-top: 48px;
-  margin-bottom: 96px;
+  margin-bottom: 0;
 }
 .rsv-text {
   text-align: center;
   padding: 0;
+}
+.dummy-for-floorplan {
+  height: 596px;
 }
 </style>
