@@ -7,10 +7,10 @@
       <div class="nameInfo">
         <div class="studentId">
           <p>학번</p>
-          <input type="text" value="1233" />
+          <input type="text" />
         </div>
         <div class="studentName">
-          <p>성함</p>
+          <p>이름</p>
           <input type="text" />
         </div>
       </div>
@@ -18,15 +18,55 @@
         <div class="positionInfo">
           <p>직책</p>
           <div class="degreeButton">
-            <span><button id="studentButton">학생</button></span>
-            <span><button id="professorButton">교수</button></span>
+            <span>
+              <v-btn
+                :ripple="false"
+                :color="bgcolorStudent"
+                width="87px"
+                height="51px"
+                @click="selectStudent"
+              >
+                학생
+              </v-btn></span
+            >
+            <span
+              ><v-btn
+                :ripple="false"
+                :color="bgcolorProfessor"
+                width="87px"
+                height="51px"
+                @click="selectProfessor"
+              >
+                교수
+              </v-btn></span
+            >
           </div>
         </div>
         <div class="degreeCourseInfo">
           <p>학위과정</p>
           <div class="degreeButton">
-            <span><button id="collegeButton">학사</button></span>
-            <span><button id="doctorButton">석박사</button></span>
+            <span
+              ><v-btn
+                :ripple="false"
+                :color="bgcolorMaster"
+                width="87px"
+                height="51px"
+                @click="selectMaster"
+              >
+                학사
+              </v-btn></span
+            >
+            <span
+              ><v-btn
+                :ripple="false"
+                :color="bgcolorDoctor"
+                width="87px"
+                height="51px"
+                @click="selectDoctor"
+              >
+                석박사
+              </v-btn></span
+            >
           </div>
         </div>
       </div>
@@ -68,6 +108,10 @@ export default {
   components: {},
   data() {
     return {
+      bgcolorStudent: '#d9d9d9',
+      bgcolorProfessor: '#d9d9d9',
+      bgcolorMaster: '#d9d9d9',
+      bgcolorDoctor: '#d9d9d9',
       sampleData: ''
     }
   },
@@ -75,7 +119,44 @@ export default {
   created() {},
   mounted() {},
   unmounted() {},
-  methods: {}
+  methods: {
+    selectStudent() {
+      if (this.bgcolorStudent === '#d9d9d9') {
+        this.bgcolorStudent = 'white'
+        this.bgcolorProfessor = '#d9d9d9'
+      } else {
+        this.bgcolorStudent = 'white'
+        this.bgcolorProfessor = '#d9d9d9'
+      }
+    },
+    selectProfessor() {
+      if (this.bgcolorProfessor === '#d9d9d9') {
+        this.bgcolorStudent = '#d9d9d9'
+        this.bgcolorProfessor = 'white'
+      } else {
+        this.bgcolorStudent = '#d9d9d9'
+        this.bgcolorProfessor = 'white'
+      }
+    },
+    selectMaster() {
+      if (this.bgcolorMaster === '#d9d9d9') {
+        this.bgcolorMaster = 'white'
+        this.bgcolorDoctor = '#d9d9d9'
+      } else {
+        this.bgcolorMaster = 'white'
+        this.bgcolorDoctor = '#d9d9d9'
+      }
+    },
+    selectDoctor() {
+      if (this.bgcolorMaster === '#d9d9d9') {
+        this.bgcolorMaster = '#d9d9d9'
+        this.bgcolorDoctor = 'white'
+      } else {
+        this.bgcolorMaster = '#d9d9d9'
+        this.bgcolorDoctor = 'white'
+      }
+    }
+  }
 }
 </script>
 
@@ -90,7 +171,7 @@ export default {
 }
 .signUpHead {
   text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 50px;
 }
 .signUpHead > h6 {
   font-size: 24px;
@@ -125,11 +206,6 @@ export default {
 .degreeButton > span {
   margin-right: 1px;
 }
-.degreeButton > span > button {
-  width: 87px;
-  height: 51px;
-  background-color: #d9d9d9;
-}
 .infoBox > p {
   font-size: 24px;
   margin-bottom: 10px;
@@ -138,13 +214,14 @@ export default {
   width: 388px;
   background-color: #d9d9d9;
   height: 51px;
+  padding-left: 5px;
   border-radius: 2px;
 }
 .signInButton > form > button {
   width: 388px;
   height: 96px;
   font-size: 24px;
-  background-color: #63acfd;
+  background-color: #658ef8;
   border-radius: 2px;
 }
 .passwordInfo {
@@ -152,5 +229,8 @@ export default {
 }
 .passwordInfo > .infoBox > input {
   margin-bottom: 5px;
+}
+.v-btn:before {
+  opacity: 0 !important;
 }
 </style>
