@@ -39,6 +39,11 @@ const routes = [
     path: '/mypage',
     name: 'MyPageView',
     component: () => import(/* webpackChunkName: "mypage" */ '../views/MyPageView.vue')
+  },
+  {
+    path: '/rsvcomplete',
+    name: 'ReservationComplete',
+    component: () => import(/* webpackChunkName: "login", webpackPrefetch:true */ '../views/RsvCompleteView.vue')
   }
 ]
 
