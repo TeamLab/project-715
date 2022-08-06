@@ -1,5 +1,5 @@
 <template>
-  <v-row class="fill-height main-calendar" v-if="showCalendar">
+  <v-row class="fill-height main-calendar">
     <v-col>
       <v-sheet height="64">
         <v-toolbar flat>
@@ -60,9 +60,6 @@
 
 <script>
 export default {
-  props: {
-    showCalendar: Boolean
-  },
   data () {
     return {
       isBooking: false,
@@ -94,5 +91,7 @@ export default {
   width:70%;
   max-width: 900px;
   margin: auto;
+  padding-top: 96px;
+  margin-bottom: 96px;
 }
 </style>
