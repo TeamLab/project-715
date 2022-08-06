@@ -6,12 +6,10 @@
       </div>
       <div class="nameInfo">
         <div class="studentId">
-          <p>학번</p>
-          <input type="text" />
+          <v-text-field class="v_text_input" label="학번"></v-text-field>
         </div>
         <div class="studentName">
-          <p>이름</p>
-          <input type="text" />
+          <v-text-field class="v_text_input" label="이름"></v-text-field>
         </div>
       </div>
       <div class="degreeInfo">
@@ -72,27 +70,41 @@
       </div>
       <div class="idInfo">
         <div class="infoBox">
-          <p>아이디</p>
-          <input type="text" />
+          <v-text-field
+            class="v_text_input"
+            label="아이디"
+            style="margin-bottom: 24px"
+          ></v-text-field>
         </div>
       </div>
       <div class="passwordInfo">
         <div class="infoBox">
-          <p>비밀번호</p>
-          <input type="password" />
-          <input type="password" />
+          <v-text-field
+            class="v_text_input"
+            label="비밀번호"
+            type="password"
+            style="margin-bottom: 24px"
+          ></v-text-field>
+          <v-text-field
+            class="v_text_input"
+            label="비밀번호 확인"
+            type="password"
+            style="margin-bottom: 24px"
+          ></v-text-field>
         </div>
       </div>
       <div class="passwordVerify">
         <div class="infoBox">
-          <p>비밀번호 확인 질문</p>
-          <input type="text" />
+          <v-text-field
+            class="v_text_input"
+            label="비밀번호 확인 질문"
+            style="margin-bottom: 24px"
+          ></v-text-field>
         </div>
       </div>
       <div class="emailInfo">
         <div class="infoBox">
-          <p>이메일</p>
-          <input type="text" />
+          <v-text-field class="v_text_input" label="이메일"></v-text-field>
         </div>
       </div>
       <div class="signInButton">
@@ -200,7 +212,7 @@ export default {
   justify-content: space-between;
 }
 .degreeInfo > div > p {
-  font-size: 24px;
+  font-size: 20px;
   margin-bottom: 10px;
 }
 .degreeButton > span {
@@ -210,25 +222,13 @@ export default {
   font-size: 24px;
   margin-bottom: 10px;
 }
-.infoBox > input {
-  width: 388px;
-  background-color: #d9d9d9;
-  height: 51px;
-  padding-left: 5px;
-  border-radius: 2px;
-}
+
 .signInButton > form > button {
   width: 388px;
   height: 96px;
   font-size: 24px;
   background-color: #658ef8;
   border-radius: 2px;
-}
-.passwordInfo {
-  height: 158px;
-}
-.passwordInfo > .infoBox > input {
-  margin-bottom: 5px;
 }
 .v-btn:before {
   opacity: 0 !important;
