@@ -83,6 +83,7 @@ export default {
   },
   watch: {
     focus() {
+      console.log(this.focus)
       this.$emit('isPicked', true)
     }
   },
@@ -95,7 +96,6 @@ export default {
     },
     next () {
       this.$refs.calendar.next()
-      console.log(this.$refs.calendar)
     }
   }
 }
@@ -111,7 +111,7 @@ export default {
 }
 .rsv-text {
   text-align: center;
-  padding: 0;
+  /* padding: 0; */
 }
 .dummy-for-floorplan {
   height: 596px;
