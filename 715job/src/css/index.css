@@ -1,6 +1,8 @@
 /* All Files Font */
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@1,700&display=swap');
-
+/* .body {
+  font-family: 'Fira Sans';
+} 여기에 전체 적용할 폰트 작성*/
 
 /* App.vue */
 .main-background {
@@ -8,14 +10,14 @@
   background-color: #769fcd;
   width: 100%;
   /* height: 850px; */
-  height: calc(96px + 80vh);
+  height: calc(96px + 70vh);
   transition-duration: 0.5s;
 }
 .not-main-background {
   position: absolute;
   background-color: transparent;
   width: 100%;
-  height: calc(96px + 80vh);
+  height: calc(96px + 70vh);
   /* height: 850px; */
   transition-duration: 0.5s;
 }
