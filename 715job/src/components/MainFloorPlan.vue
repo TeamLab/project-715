@@ -68,27 +68,25 @@ export default {
   width:70%;
   max-width: 900px;
   margin: auto;
-  padding: 0;
   padding-top: 48px;
 }
 .main-floor-plan {
-  border: 2px solid #002448;
-  height:416px;
+  height: 42%;
   display: block;
   width: 100%;
   padding: 0;
-}
-.col-14, .col-23 {
-  background-color: #DDE5E8;
+  background-image: url('../assets/floorplan.PNG');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 .row-17 {
-  height: 46px;
+  height: 12%;
 }
 .table-1to6 {
-  height: 82px;
+  height: 18%;
 }
 .row-23 {
-  height: 39px;
+  height: 12%;
 }
 .col-14 {
   width: 20%;
