@@ -35,11 +35,10 @@ export default {
     setInput(isBooking) {
       this.isBooking = isBooking
       window.scrollTo({ top: this.$refs.MainCalendar.offsetTop, behavior: 'smooth' })
-      console.log(this.$refs.MainCalendar.offsetTop)
     },
     showFloorPlan(isPicked) {
       this.isPicked = isPicked
-      window.scrollTo({ top: this.$refs.MainFloorPlan.offsetTop, behavior: 'smooth' })
+      window.scrollTo({ top: this.$refs.MainFloorPlan.offsetTop + 96, behavior: 'smooth' })
     }
   }
 }

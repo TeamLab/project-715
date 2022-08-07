@@ -71,7 +71,7 @@ export default {
   padding-top: 48px;
 }
 .main-floor-plan {
-  height: 42%;
+  height: 465px;
   display: block;
   width: 100%;
   padding: 0;
@@ -80,13 +80,13 @@ export default {
   background-size: 100% 100%;
 }
 .row-17 {
-  height: 12%;
+  height: 56px;
 }
 .table-1to6 {
-  height: 18%;
+  height: 85px;
 }
 .row-23 {
-  height: 12%;
+  height: 49px;
 }
 .col-14 {
   width: 20%;
