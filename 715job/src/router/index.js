@@ -44,6 +44,11 @@ const routes = [
     path: '/rsvcomplete',
     name: 'ReservationComplete',
     component: () => import(/* webpackChunkName: "login", webpackPrefetch:true */ '../views/RsvCompleteView.vue')
+  },
+  {
+    path: '/timetable',
+    name: 'TimeTable',
+    component: () => import(/* webpackChunkName: "login", webpackPrefetch:true */ '../components/TimeTable.vue')
   }
 ]
 
