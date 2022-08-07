@@ -41,7 +41,8 @@ export default {
 <style scoped>
 .main-page {
   width: 100%;
-  height: 754px;
+  /* height: 754px; */
+  height: 80vh;
   vertical-align: middle;
   display: flex;
   flex-direction: column;
