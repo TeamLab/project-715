@@ -2,13 +2,13 @@
   <v-app>
     <v-app-bar app color="transparent" elevation="0" height="96px">
       <router-link to="/">
-        <div class="d-flex align-center">
+        <div class="d-flex align-center ml-2">
           <v-img
-            alt="Vuetify Name"
+            alt="715Job"
             class="shrink hidden-sm-and-down"
             contain
             min-width="100"
-            src="./assets/715Job-white.png"
+            src="./assets/715Job.png"
             width="150"
           />
         </div>
@@ -17,7 +17,6 @@
       <router-link to="/login" style="text-decoration:none;color:white">
         <v-btn
           class="mr-4"
-          href="#"
           dark
           color="#002448"
           height="45px"
@@ -32,7 +31,7 @@
     <v-main>
       <router-view />
     </v-main>
-    <v-footer color="#f7f7f7" class="footer">
+    <v-footer color="#f7f7f7">
       <div id="pknusme-link-box">
         <a id="pknusme-link" href="https://sme.pknu.ac.kr/sme/1">PKNU SME</a>
       </div>

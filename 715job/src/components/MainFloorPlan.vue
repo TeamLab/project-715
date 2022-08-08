@@ -1,74 +1,89 @@
 <template>
-  <v-col class="main-floor-plan-container">
-    <v-col class="rsv-text">
-      <h1>예약 테이블 선택</h1>
+  <div>
+    <v-col class="main-floor-plan-container">
+      <v-col class="rsv-text">
+        <h1>예약 테이블 선택</h1>
+      </v-col>
+      <v-col class="main-floor-plan" style="display:flex;flex-direction:column">
+        <div class="row-17" style="display:flex;">
+          <div class="col-14"></div>
+          <div class="col-23"></div>
+          <div class="col-23"></div>
+          <div class="col-14"></div>
+        </div>
+        <div class="table-1to6" style="display:flex;">
+          <div class="col-14"></div>
+          <div class="col-23 table-135"><v-btn dark height="100%" width=100% class="table-btn" @click="showRsvContents">Table 1</v-btn></div>
+          <div class="col-23 table-246"><v-btn dark height="100%" width=100% class="table-btn" @click="showRsvContents">Table 2</v-btn></div>
+          <div class="col-14"></div>
+        </div>
+        <div class="row-23" style="display:flex;">
+          <div class="col-14"></div>
+          <div class="col-23"></div>
+          <div class="col-23"></div>
+          <div class="col-14"></div>
+        </div>
+        <div class="table-1to6" style="display:flex;">
+          <div class="col-14"></div>
+          <div class="col-23 table-135"><v-btn dark height="100%" width=100% class="table-btn" @click="showRsvContents">Table 3</v-btn></div>
+          <div class="col-23 table-246"><v-btn dark height="100%" width=100% class="table-btn" @click="showRsvContents">Table 4</v-btn></div>
+          <div class="col-14"></div>
+        </div>
+        <div class="row-23" style="display:flex;">
+          <div class="col-14"></div>
+          <div class="col-23"></div>
+          <div class="col-23"></div>
+          <div class="col-14"></div>
+        </div>
+        <div class="table-1to6" style="display:flex;">
+          <div class="col-14"></div>
+          <div class="col-23 table-135"><v-btn dark height="100%" width=100% class="table-btn" @click="showRsvContents">Table 5</v-btn></div>
+          <div class="col-23 table-246"><v-btn dark height="100%" width=100% class="table-btn" @click="showRsvContents">Table 6</v-btn></div>
+          <div class="col-14"></div>
+        </div>
+        <div class="row-17" style="display:flex;">
+          <div class="col-14"></div>
+          <div class="col-23"></div>
+          <div class="col-23"></div>
+          <div class="col-14"></div>
+        </div>
+      </v-col>
     </v-col>
-    <v-col class="main-floor-plan" style="display:flex;flex-direction:column">
-      <div class="row-17" style="display:flex;">
-        <div class="col-14"></div>
-        <div class="col-23"></div>
-        <div class="col-23"></div>
-        <div class="col-14"></div>
-      </div>
-      <div class="table-1to6" style="display:flex;">
-        <div class="col-14"></div>
-        <div class="col-23 table-135"><v-btn dark height="100%" width=100% class="table-btn">Table 1</v-btn></div>
-        <div class="col-23 table-246"><v-btn dark height="100%" width=100% class="table-btn">Table 2</v-btn></div>
-        <div class="col-14"></div>
-      </div>
-      <div class="row-23" style="display:flex;">
-        <div class="col-14"></div>
-        <div class="col-23"></div>
-        <div class="col-23"></div>
-        <div class="col-14"></div>
-      </div>
-      <div class="table-1to6" style="display:flex;">
-        <div class="col-14"></div>
-        <div class="col-23 table-135"><v-btn dark height="100%" width=100% class="table-btn">Table 3</v-btn></div>
-        <div class="col-23 table-246"><v-btn dark height="100%" width=100% class="table-btn">Table 4</v-btn></div>
-        <div class="col-14"></div>
-      </div>
-      <div class="row-23" style="display:flex;">
-        <div class="col-14"></div>
-        <div class="col-23"></div>
-        <div class="col-23"></div>
-        <div class="col-14"></div>
-      </div>
-      <div class="table-1to6" style="display:flex;">
-        <div class="col-14"></div>
-        <div class="col-23 table-135"><v-btn dark height="100%" width=100% class="table-btn">Table 5</v-btn></div>
-        <div class="col-23 table-246"><v-btn dark height="100%" width=100% class="table-btn">Table 6</v-btn></div>
-        <div class="col-14"></div>
-      </div>
-      <div class="row-17" style="display:flex;">
-        <div class="col-14"></div>
-        <div class="col-23"></div>
-        <div class="col-23"></div>
-        <div class="col-14"></div>
-      </div>
-    </v-col>
-  </v-col>
+    <v-col class="dummy-for-mainrsvcontents" v-if="!hideDummy"></v-col>
+  </div>
 </template>
 <script>
 export default {
   components: {},
+  props: {
+    hideDummy: Boolean
+  },
   data() {
-    return {}
+    return {
+      isTablePicked: true
+    }
   },
   setup() {},
   created() {},
   mounted() {},
   unmounted() {},
-  methods: {}
+  methods: {
+    showRsvContents () {
+      this.$emit('isTablePicked', this.isTablePicked)
+    }
+  }
 }
 </script>
 <style>
 .main-floor-plan-container {
-  height: 1024px;
+  /* height: 1024px; */
   width:70%;
   max-width: 900px;
   margin: auto;
   padding-top: 48px;
+}
+.dummy-for-mainrsvcontents {
+  height: calc(98vh - 615px);
 }
 .main-floor-plan {
   height: 465px;

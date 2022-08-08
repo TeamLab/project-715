@@ -29,7 +29,6 @@
         </div>
       </div>
     </div>
-    <div class="footer">footer</div>
   </div>
 </template>
 <script>
@@ -73,10 +72,6 @@ a:visited {
   margin: auto;
   text-align: center;
   padding-top: 123px;
-}
-.footer {
-  border-top: 1px solid #cccccc;
-  text-align: center;
 }
 .loginContents {
   margin-top: 98px;

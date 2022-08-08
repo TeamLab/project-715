@@ -30,7 +30,8 @@
           ref="calendar"
           v-model="focus"
           color="indigo lighten-2"
-        >aa</v-calendar>
+          @click:date="showFloorPlan"
+        ></v-calendar>
       </v-sheet>
     </v-col>
     <v-col class="dummy-for-floorplan" v-if="!hideDummy"></v-col>
@@ -45,28 +46,23 @@ export default {
   },
   data () {
     return {
-      isBooking: false,
       focus: ''
-    }
-  },
-  watch: {
-    focus() {
-      console.log(this.focus)
-      if (this.focus === document.getElementsByClassName('v-btn--has-bg')) {
-        console.log(this.focus)
-        this.$emit('isPicked', true)
-      }
     }
   },
   methods: {
     setToday () {
       this.focus = ''
+      console.log(this.$refs.calendar)
     },
     prev () {
       this.$refs.calendar.prev()
     },
     next () {
       this.$refs.calendar.next()
+    },
+    showFloorPlan () {
+      this.$emit('isDatePicked', true)
+      this.$emit('PickedDate', this.focus)
     }
   }
 }
@@ -81,11 +77,10 @@ export default {
   margin-bottom: 0;
 }
 .rsv-text {
-  text-align: center;
-  /* padding: 0; */
+  text-align: left;
+  padding-bottom: 24px;
 }
 .dummy-for-floorplan {
   height: 596px;
 }
-
 </style>

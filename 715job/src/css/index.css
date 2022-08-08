@@ -1,9 +1,21 @@
 /* All Files Font */
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@1,700&display=swap');
-/* .body {
-  font-family: 'Fira Sans';
-} 여기에 전체 적용할 폰트 작성*/
 
+@font-face {
+  font-family: 'MICEGothic Bold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+main {
+  font-family: 'MICEGothic Bold';
+  font-size: large;
+}
+footer {
+  font-size: 15px;
+  font-weight: 200;
+}
 /* App.vue */
 .main-background {
   position: absolute;
