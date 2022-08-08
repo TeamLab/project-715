@@ -9,7 +9,7 @@
       <MainFloorPlan v-if="isDatePicked" @isTablePicked="showRsvContents" :hideDummy="isTablePicked"/>
     </div>
     <div ref="MainRsvContents">
-      <MainRsvContents v-if="isTablePicked"/>
+      <MainRsvContents v-if="isTablePicked" :RsvDate="PickedDate" :RsvTable="PickedTable"/>
     </div>
   </div>
 </template>
@@ -27,7 +27,9 @@ export default {
     return {
       isBooking: false,
       isDatePicked: false,
-      isTablePicked: false
+      isTablePicked: false,
+      PickedDate: '',
+      PickedTable: ''
     }
   },
   components: {
@@ -47,13 +49,15 @@ export default {
       this.isBooking = isBooking
       window.scrollTo({ top: this.$refs.MainCalendar.offsetTop, behavior: 'smooth' })
     },
-    showFloorPlan(isDatePicked) {
+    showFloorPlan(isDatePicked, PickedDate) {
       this.isDatePicked = isDatePicked
+      this.PickedDate = PickedDate
       window.scrollTo({ top: this.$refs.MainFloorPlan.offsetTop + 96, behavior: 'smooth' })
     },
-    showRsvContents(isTablePicked) {
+    showRsvContents(isTablePicked, PickedTable) {
       this.isTablePicked = isTablePicked
-      window.scrollTo({ top: this.$refs.MainFloorPlan.offsetTop + 131, behavior: 'smooth' })
+      this.PickedTable = PickedTable
+      window.scrollTo({ top: this.$refs.MainFloorPlan.offsetTop + 134, behavior: 'smooth' })
     }
   }
 }

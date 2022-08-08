@@ -29,7 +29,7 @@
         <v-calendar
           ref="calendar"
           v-model="focus"
-          color="indigo lighten-2"
+          color="#769fcd"
           @click:date="showFloorPlan"
         ></v-calendar>
       </v-sheet>
@@ -61,8 +61,7 @@ export default {
       this.$refs.calendar.next()
     },
     showFloorPlan () {
-      this.$emit('isDatePicked', true)
-      this.$emit('PickedDate', this.focus)
+      this.$emit('isDatePicked', true, this.focus)
     }
   }
 }
