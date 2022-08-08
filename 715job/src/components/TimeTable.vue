@@ -7,8 +7,8 @@
             <v-btn
               class="v_btn_timeTable"
               :ripple="false"
-              :color="bgTimeColor"
-              @click="selectTime"
+              :style="style1"
+              @click="style1.background = 'blue'"
               >{{ timeNum }}</v-btn
             >
           </li>
@@ -96,7 +96,9 @@ export default {
   data() {
     return {
       selected: '',
-      bgTimeColor: '#d9d9d9',
+      style1: {
+        background: '#d9d9d9'
+      },
       timeNum: [
         0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
         20, 21, 22, 23
@@ -108,11 +110,7 @@ export default {
   created() {},
   mounted() {},
   unmounted() {},
-  methods: {
-    selectTime(i) {
-      this.bgTimeColor = 'white'
-    }
-  }
+  methods: {}
 }
 </script>
 
@@ -136,6 +134,9 @@ export default {
   list-style: none;
   border-right: 1px solid black;
   text-align: center;
+}
+.timeLists > li:last-child {
+  border: none;
 }
 .timeLists > li > .v_btn_timeTable {
   width: 100%;
