@@ -178,6 +178,10 @@ export default {
   border-radius: 10px;
   text-align: center;
   font-size: 24px;
+  padding-left: 10px;
+  -webkit-appearance: menulist !important; /* override vuetify style */
+  -moze-appearance: menulist !important; /* override vuetify style */
+  appearance: menulist !important; /* override vuetify style */
 }
 .rsvContents1 > .content1-1 > .peopleNum > option {
   font-size: 24px;
