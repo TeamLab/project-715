@@ -74,11 +74,16 @@
         </ol>
       </div>
       <div class="confirmNote">
-        <span><input type="checkbox" /></span>
+        <span><input type="checkbox" v-model="checkedValue" /></span>
         <span>위의 사항에 동의합니다.</span>
       </div>
       <div class="doRsv">
-        <v-btn id="v_btn_doRsv" :ripple="false" color="#658EF8">
+        <v-btn
+          id="v_btn_doRsv"
+          :ripple="false"
+          color="#658EF8"
+          :disabled="!checkedValue"
+        >
           예약하기
         </v-btn>
       </div>
@@ -95,7 +100,8 @@ export default {
       timeNum: [
         0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
         20, 21, 22, 23
-      ]
+      ],
+      checkedValue: 'what'
     }
   },
   setup() {},
@@ -104,7 +110,7 @@ export default {
   unmounted() {},
   methods: {
     selectTime(i) {
-      this.timeNum[i].bgTimeColor = 'white'
+      this.bgTimeColor = 'white'
     }
   }
 }
@@ -143,7 +149,7 @@ export default {
   margin-bottom: 25px;
 }
 .dateContents > span {
-  padding-left: 2%;
+  padding-left: 2.5%;
   color: #658ef8;
 }
 #selectedDate {
@@ -179,9 +185,9 @@ export default {
   text-align: center;
   font-size: 24px;
   padding-left: 10px;
-  -webkit-appearance: menulist !important; /* override vuetify style */
-  -moze-appearance: menulist !important; /* override vuetify style */
-  appearance: menulist !important; /* override vuetify style */
+  -webkit-appearance: menulist !important;
+  -moze-appearance: menulist !important;
+  appearance: menulist !important;
 }
 .rsvContents1 > .content1-1 > .peopleNum > option {
   font-size: 24px;
