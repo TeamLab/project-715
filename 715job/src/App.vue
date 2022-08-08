@@ -32,6 +32,15 @@
     <v-main>
       <router-view />
     </v-main>
+    <v-footer class="footer">
+      <div id="pknusme-link-box">
+        <a id="pknusme-link" href="https://sme.pknu.ac.kr/sme/1">PKNU SME</a>
+      </div>
+      <v-spacer></v-spacer>
+      <div id="insta-id">
+        Made by @yongchoooon @_buhyeon_ @yo__ngg @s.ggyu
+      </div>
+    </v-footer>
   </v-app>
 </template>
 

@@ -21,3 +21,20 @@
   /* height: 850px; */
   transition-duration: 0.5s;
 }
+.pknusme-link-box {
+  padding: 12px 0px;
+}
+#pknusme-link {
+  color: #979797;
+}
+#insta-id {
+  color: #979797;
+  flex-wrap:nowrap;
+  padding: 12px 0px;
+  text-align:center;
+}
+@media screen and (max-width: 650px) {
+  .footer {
+    flex-direction: column;
+  }
+}
