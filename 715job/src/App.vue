@@ -32,7 +32,7 @@
     <v-main>
       <router-view />
     </v-main>
-    <v-footer class="footer">
+    <v-footer color="#f7f7f7" class="footer">
       <div id="pknusme-link-box">
         <a id="pknusme-link" href="https://sme.pknu.ac.kr/sme/1">PKNU SME</a>
       </div>
