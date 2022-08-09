@@ -39,14 +39,10 @@ export default {
     setPersonalInfo() {
       this.isPersonalInfo = true
       this.isMyRsvInfo = false
-      console.log('isPersonal : ' + this.isPersonalInfo)
-      console.log('isMyRsv : ' + this.isMyRsvInfo)
     },
     setMyRsvInfo() {
       this.isPersonalInfo = false
       this.isMyRsvInfo = true
-      console.log('isPersonal : ' + this.isPersonalInfo)
-      console.log('isMyRsv : ' + this.isMyRsvInfo)
     }
   }
 }

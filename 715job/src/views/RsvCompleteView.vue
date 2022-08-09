@@ -1,5 +1,5 @@
 <template>
-    <div class="main">
+    <div class="rsvcomplete">
         <div>
             <p id="rsv-complete-ment">예약이 완료 되었습니다.</p>
             <div class="rsv-move-btn">
@@ -47,7 +47,7 @@ export default {
     text-decoration: none;
     list-style: none;
 }
-.main {
+.rsvcomplete {
     width: 70%;
     height: 50%;
     margin: auto;
