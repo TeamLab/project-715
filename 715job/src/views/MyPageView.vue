@@ -39,10 +39,14 @@ export default {
     setPersonalInfo() {
       this.isPersonalInfo = true
       this.isMyRsvInfo = false
+      console.log('isPersonal : ' + this.isPersonalInfo)
+      console.log('isMyRsv : ' + this.isMyRsvInfo)
     },
     setMyRsvInfo() {
       this.isPersonalInfo = false
       this.isMyRsvInfo = true
+      console.log('isPersonal : ' + this.isPersonalInfo)
+      console.log('isMyRsv : ' + this.isMyRsvInfo)
     }
   }
 }
@@ -67,6 +71,7 @@ export default {
   display: flex;
   justify-content: center;
   position: relative;
+  padding-top:10%;
 }
 .left-box-inner{
   display: flex;
@@ -79,7 +84,7 @@ export default {
 .left-box-profile{
   justify-content: center;
   position: relative;
-  padding-top:50px;
+  padding-top:45%;
 }
 .guest-img{
   width: 150px;
@@ -90,17 +95,17 @@ export default {
   text-decoration: underline;
 }
 #select-info{
-  padding-top: 50%;
+  padding-top: 25%;
 }
 .select-info{
   display: flex;
   align-items: center;
   justify-content: center;
   height: 60px;
-  background-color: rgb(219, 242, 251);
+  background-color: rgb(237, 235, 235);
 }
 #select-rsvinfo{
-  border:solid rgb(133, 214, 255);
+  border:solid gray;
 }
 #select-profileinfo > a{
   color:black;
@@ -112,9 +117,9 @@ export default {
   color:blue;
 }
 #select-profileinfo{
-  border-left:solid rgb(133, 214, 255);
-  border-right:solid rgb(133, 214, 255);
-  border-bottom:solid rgb(133, 214, 255);
+  border-left:solid gray;
+  border-right:solid gray;
+  border-bottom:solid gray;
 }
 .right-box{
   background: rgb(255, 255, 255);
