@@ -16,6 +16,7 @@ footer {
   font-size: 15px;
   font-weight: 200;
 }
+
 /* App.vue */
 .main-background {
   position: absolute;
@@ -30,7 +31,6 @@ footer {
   background-color: transparent;
   width: 100%;
   height: calc(96px + 80vh);
-  /* height: 850px; */
   transition-duration: 0.5s;
 }
 .pknusme-link-box {
