@@ -12,7 +12,7 @@
               label="직책"
               dense
               outlined
-              :style='{"padding-top":"20px", "padding-left":"20px", "padding-right":"20px"}'
+              :style='{"padding-top":"20px", "padding-left":"20px", "padding-right":"20px", "width":"200px"}'
             ></v-select>
 
             <v-text-field
@@ -77,6 +77,7 @@ export default {
   width:70%;
   height:500px;
   float:right;
+  padding-top:10%;
 }
 .blank-box{
   height: 10%;
@@ -91,7 +92,8 @@ export default {
   padding-left:7%;
 }
 .right-box-psninfo{
-  background-color: rgb(109, 109, 255);
+  background-color: rgb(0, 36, 72);
+  color:white;
   width:90%;
   height:50px;
   display: flex;
@@ -101,7 +103,9 @@ export default {
   background-color: rgb(255, 255, 255);
   width:90%;
   height:350px;
-  border:solid rgb(133, 214, 255);
+  border-left:solid gray;
+  border-right:solid gray;
+  border-bottom:solid gray;
 }
 .change-psn-info{
   border:solid gray;

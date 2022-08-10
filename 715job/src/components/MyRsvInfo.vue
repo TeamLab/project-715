@@ -34,6 +34,7 @@ export default {
   width:70%;
   height:500px;
   float:right;
+  padding-top:10%;
 }
 .blank-box{
   height: 10%;
@@ -53,6 +54,8 @@ export default {
   height:50px;
   display: flex;
   align-items: center;
+  background-color: rgb(0, 36, 72);
+  color:white;
 }
 .right-box-detail-rsvinfo{
   background-color: rgb(237, 235, 235);
@@ -65,8 +68,10 @@ export default {
 }
 .right-box-rsvinfo-box{
   width:90%;
-  height:300px;
-  border:solid rgb(133, 214, 255);
+  height:350px;
+  border-left:solid gray;
+  border-right:solid gray;
+  border-bottom:solid gray;
 }
 .change-rsv{
   border:solid gray;
