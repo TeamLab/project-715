@@ -98,6 +98,17 @@
           <v-text-field
             class="v_text_input"
             label="비밀번호 확인 질문"
+            value="당신이 졸업한 초등학교는?"
+            readonly
+            style="margin-bottom: 24px"
+          ></v-text-field>
+        </div>
+      </div>
+      <div class="passwordVerify">
+        <div class="infoBox">
+          <v-text-field
+            class="v_text_input"
+            label="비밀번호 확인 답변"
             style="margin-bottom: 24px"
           ></v-text-field>
         </div>
@@ -180,6 +191,7 @@ export default {
   width: 388px;
   height: 900px;
   margin: auto;
+  margin-bottom: 50px;
 }
 .signUpHead {
   text-align: center;
@@ -227,7 +239,8 @@ export default {
   width: 388px;
   height: 96px;
   font-size: 24px;
-  background-color: #658ef8;
+  background-color: rgb(0, 36, 72);
+  color: white;
   border-radius: 2px;
 }
 .v-btn:before {
