@@ -31,7 +31,10 @@
           <v-text-field class="v_text_input" label="아이디"></v-text-field>
         </div>
         <div class="accountInfoBox">
-          <v-text-field class="v_text_input" label="비밀번호 확인 질문"></v-text-field>
+          <v-text-field class="v_text_input" label="비밀번호 확인 질문" value="당신이 졸업한 초등학교는?" readonly></v-text-field>
+        </div>
+        <div class="accountInfoBox">
+          <v-text-field class="v_text_input" label="비밀번호 확인 답변"></v-text-field>
         </div>
         <div class="findIdForm">
           <router-link id="toFindIdResult" to="/user/findidresult"
@@ -125,6 +128,7 @@ export default {
   height: 70px;
   font-size: 24px;
   border-radius: 2px;
-  background-color: #658ef8;
+  background-color: rgb(0, 36, 72);
+  color: white;
 }
 </style>

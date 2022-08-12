@@ -95,7 +95,8 @@ a:visited {
   height: 70px;
   font-size: 24px;
   border-radius: 2px;
-  background-color: #658ef8;
+  background-color: rgb(0, 36, 72);
+  color: white;
 }
 .findButtons > .findButtonLists {
   display: flex;

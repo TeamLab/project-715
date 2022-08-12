@@ -85,7 +85,8 @@ export default {
   width: 388px;
   height: 70px;
   font-size: 24px;
-  background-color: #658ef8;
+  background-color: rgb(0, 36, 72);
+  color: white;
   border-radius: 2px;
 }
 </style>

@@ -10,24 +10,27 @@
             min-width="100"
             src="./assets/715Job.png"
             width="150"
+            @click="backToMain"
           />
         </div>
       </router-link>
       <v-spacer></v-spacer>
-      <router-link to="/login" style="text-decoration:none;color:white">
+      <router-link to="/login" style="text-decoration: none; color: white">
         <v-btn
           class="mr-4"
           dark
           color="#002448"
           height="45px"
           width="100px"
-          :style='{"border-radius": "15px", "font-family": "Fira Sans"}'
+          :style="{ 'border-radius': '15px', 'font-family': 'Fira Sans' }"
         >
           <span>Login</span>
         </v-btn>
       </router-link>
     </v-app-bar>
-    <div :class="{ 'main-background': isMain, 'not-main-background': isNotMain }"></div>
+    <div
+      :class="{ 'main-background': isMain, 'not-main-background': isNotMain }"
+    ></div>
     <v-main>
       <router-view />
     </v-main>
@@ -36,9 +39,7 @@
         <a id="pknusme-link" href="https://sme.pknu.ac.kr/sme/1">PKNU SME</a>
       </div>
       <v-spacer></v-spacer>
-      <div id="insta-id">
-        Made by @yongchoooon @_buhyeon_ @yo__ngg @s.ggyu
-      </div>
+      <div id="insta-id">Made by @yongchoooon @_buhyeon_ @yo__ngg @s.ggyu</div>
     </v-footer>
   </v-app>
 </template>
@@ -53,9 +54,17 @@ export default {
       isNotMain: false
     }
   },
-  methods: {},
+  methods: {
+    backToMain() {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      })
+    }
+  },
   watch: {
-    '$route' (to, from) {
+    $route(to, from) {
       if (to.path !== '/' && from.path === '/') {
         this.isMain = false
         this.isNotMain = true
