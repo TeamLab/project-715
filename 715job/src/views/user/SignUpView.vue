@@ -9,7 +9,7 @@
           <v-text-field class="v_text_input" label="학번"></v-text-field>
         </div>
         <div class="studentName">
-          <v-text-field class="v_text_input" label="이름"></v-text-field>
+          <v-text-field type="text" id="name" v-model="user.name" class="v_text_input" label="이름" autocomplete='off'></v-text-field>
         </div>
       </div>
       <div class="degreeInfo">
@@ -71,6 +71,10 @@
       <div class="idInfo">
         <div class="infoBox">
           <v-text-field
+            type="text"
+            id="id"
+            v-model="user.userid"
+            autocomplete='off'
             class="v_text_input"
             label="아이디"
             style="margin-bottom: 24px"
@@ -80,9 +84,11 @@
       <div class="passwordInfo">
         <div class="infoBox">
           <v-text-field
+            type="password"
+            id="password"
+            v-model="user.password"
             class="v_text_input"
             label="비밀번호"
-            type="password"
             style="margin-bottom: 24px"
           ></v-text-field>
           <v-text-field
@@ -119,9 +125,7 @@
         </div>
       </div>
       <div class="signInButton">
-        <form action="">
-          <button>가입하기</button>
-        </form>
+      <button @click="signUp">가입하기</button>
       </div>
     </div>
   </div>
@@ -135,7 +139,11 @@ export default {
       bgcolorProfessor: '#d9d9d9',
       bgcolorMaster: '#d9d9d9',
       bgcolorDoctor: '#d9d9d9',
-      sampleData: ''
+      user: {
+        userid: '',
+        name: '',
+        password: ''
+      }
     }
   },
   setup() {},
@@ -143,6 +151,25 @@ export default {
   mounted() {},
   unmounted() {},
   methods: {
+    signUp(event) {
+      this.$http.post('/api/users/signup', {
+        user: this.user
+      })
+        .then((res) => {
+          if (res.data.success === true) {
+            console.log('A')
+            alert(res.data.message)
+          }
+          if (res.data.success === false) {
+            console.log('B')
+            alert(res.data.message)
+          }
+        })
+        .catch(function (error) {
+          console.log('C')
+          alert(error)
+        })
+    },
     selectStudent() {
       if (this.bgcolorStudent === '#d9d9d9') {
         this.bgcolorStudent = 'white'
@@ -235,7 +262,7 @@ export default {
   margin-bottom: 10px;
 }
 
-.signInButton > form > button {
+.signInButton > button {
   width: 388px;
   height: 96px;
   font-size: 24px;

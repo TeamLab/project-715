@@ -27,6 +27,7 @@
           <span>Login</span>
         </v-btn>
       </router-link>
+      <router-link to="/index">index</router-link>
     </v-app-bar>
     <div
       :class="{ 'main-background': isMain, 'not-main-background': isNotMain }"

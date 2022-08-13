@@ -5,17 +5,20 @@
       <div class="loginContents">
         <form action="" method=”post” enctype=”multipart/form-data”>
           <div class="idBox">
-            <v-text-field class="v_text_input" label="아이디"></v-text-field>
+            <v-text-field type="text" id="id" class="v_text_input" v-model="user.userid" label="아이디" autocomplete='off'></v-text-field>
           </div>
           <div class="passwordBox">
             <v-text-field
+              id="password"
               class="v_text_input"
+              v-model="user.password"
               label="비밀번호"
               type="password"
             ></v-text-field>
           </div>
           <div class="loginButton">
-            <input type="submit" value="로그인">
+            <!-- <input type="submit" value="로그인"> -->
+            <button @click="login">로그인</button>
           </div>
         </form>
         <div class="findButtons">
@@ -33,17 +36,35 @@
 </template>
 <script>
 export default {
-  components: {},
   data() {
     return {
-      sampleData: ''
+      user: {
+        userid: '',
+        password: ''
+      }
     }
   },
-  setup() {},
-  created() {},
-  mounted() {},
-  unmounted() {},
-  methods: {}
+  methods: {
+    login(event) {
+      this.$http
+        .post('/api/users/login', {
+          user: this.user
+        })
+        .then(
+          (res) => {
+            // 로그인 성공
+            alert(res.data.message)
+          },
+          (err) => {
+            // error를 보여줌
+            alert('Login failed! please check your id or password.' + err)
+          }
+        )
+        .catch((err) => {
+          alert(err)
+        })
+    }
+  }
 }
 </script>
 
@@ -91,6 +112,14 @@ a:visited {
   height: 96px;
 }
 .loginButton > input {
+  width: 388px;
+  height: 70px;
+  font-size: 24px;
+  border-radius: 2px;
+  background-color: rgb(0, 36, 72);
+  color: white;
+}
+.loginButton > button {
   width: 388px;
   height: 70px;
   font-size: 24px;
