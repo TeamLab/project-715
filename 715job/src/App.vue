@@ -15,7 +15,7 @@
         </div>
       </router-link>
       <v-spacer></v-spacer>
-      <router-link to="/login" style="text-decoration: none; color: white">
+      <router-link to="/user/login" style="text-decoration: none; color: white">
         <v-btn
           class="mr-4"
           dark
@@ -27,7 +27,6 @@
           <span>Login</span>
         </v-btn>
       </router-link>
-      <router-link to="/index">index</router-link>
     </v-app-bar>
     <div
       :class="{ 'main-background': isMain, 'not-main-background': isNotMain }"

@@ -50,17 +50,21 @@ export default {
         .post('/api/users/login', {
           user: this.user
         })
-        .then(
-          (res) => {
+        .then((res) => {
+          if (res.data.success === true) {
             // 로그인 성공
             alert(res.data.message)
-          },
-          (err) => {
-            // error를 보여줌
-            alert('Login failed! please check your id or password.' + err)
+            this.$router.push('/')
+            console.log('A')
           }
-        )
+          if (res.data.success === false) {
+            // 로그인 실패
+            alert(res.data.message)
+            console.log('B')
+          }
+        })
         .catch((err) => {
+          console.log('C')
           alert(err)
         })
     }

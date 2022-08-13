@@ -11,9 +11,9 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/login',
+    path: '/user/login',
     name: 'LogInView',
-    component: () => import(/* webpackChunkName: "login", webpackPrefetch:true */ '../views/LogInView.vue')
+    component: () => import(/* webpackChunkName: "user", webpackPrefetch:true */ '../views/user/LogInView.vue')
   },
   {
     path: '/user/signup',
@@ -33,7 +33,7 @@ const routes = [
   {
     path: '/user/findidresult',
     name: 'FindIdResultView',
-    component: () => import(/* webpackChunkName: "user", webpackPrefetch:true */ '../views/user/FindIdResultView.vue')
+    component: () => import(/* webpackChunkName: "user" */ '../views/user/FindIdResultView.vue')
   },
   {
     path: '/mypage',
@@ -44,11 +44,6 @@ const routes = [
     path: '/rsvcomplete',
     name: 'ReservationComplete',
     component: () => import(/* webpackChunkName: "login", webpackPrefetch:true */ '../views/RsvCompleteView.vue')
-  },
-  {
-    path: '/index',
-    name: 'index',
-    component: () => import('../components/UserList.vue')
   }
 ]
 
