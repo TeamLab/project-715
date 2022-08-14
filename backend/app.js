@@ -13,11 +13,11 @@ var app = express();
 var mysql = require('mysql');
 // Connection 객체 생성 
 var connection = mysql.createConnection({
-  host: 'localhost',
+  host: 'rsv715.cw0mqhawwwhk.ap-northeast-2.rds.amazonaws.com',
   port: 3306,
-  user: 'root',   
-  password: '158746',
-  database: '715job'
+  user: 'admin',   
+  password: 'pknu715job',
+  database: 'rsv715'
 });  
 // Connect
 connection.connect(function (err) {   

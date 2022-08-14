@@ -32,12 +32,12 @@
           <p>학위과정</p>
           <div class="degreeButton">
             <span>
-              <v-btn id="bachelor" :ripple="false" :color="bgcolorMaster" width="87px" height="51px" @click="selectMaster">
+              <v-btn id="bachelor" :ripple="false" :color="bgcolorBachelor" width="87px" height="51px" @click="selectBachelor">
                 학사
               </v-btn>
             </span>
             <span>
-              <v-btn id="master" :ripple="false" :color="bgcolorDoctor" width="87px" height="51px" @click="selectDoctor">
+              <v-btn id="master" :ripple="false" :color="bgcolorMaster" width="87px" height="51px" @click="selectMaster">
                 석박사
               </v-btn>
             </span>
@@ -88,8 +88,8 @@ export default {
     return {
       bgcolorStudent: '#d9d9d9',
       bgcolorProfessor: '#d9d9d9',
+      bgcolorBachelor: '#d9d9d9',
       bgcolorMaster: '#d9d9d9',
-      bgcolorDoctor: '#d9d9d9',
       user: {
         studentid: '',
         name: '',
@@ -136,17 +136,17 @@ export default {
         this.user.position = 'professor'
       }
     },
-    selectMaster() {
-      if (this.bgcolorMaster === '#d9d9d9') {
-        this.bgcolorMaster = 'white'
-        this.bgcolorDoctor = '#d9d9d9'
+    selectBachelor() {
+      if (this.bgcolorBachelor === '#d9d9d9') {
+        this.bgcolorBachelor = 'white'
+        this.bgcolorMaster = '#d9d9d9'
         this.user.course = 'bachelor'
       }
     },
-    selectDoctor() {
+    selectMaster() {
       if (this.bgcolorMaster === '#d9d9d9') {
-        this.bgcolorMaster = '#d9d9d9'
-        this.bgcolorDoctor = 'white'
+        this.bgcolorBachelor = '#d9d9d9'
+        this.bgcolorMaster = 'white'
         this.user.course = 'master'
       }
     }

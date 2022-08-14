@@ -46,16 +46,14 @@ export default {
   },
   methods: {
     login(event) {
-      this.$http
-        .post('/api/users/login', {
-          user: this.user
-        })
+      this.$http.post('/api/users/login', {
+        user: this.user
+      })
         .then((res) => {
           if (res.data.success === true) {
             // 로그인 성공
             alert(res.data.message)
             this.$router.push('/')
-            console.log('A')
           }
           if (res.data.success === false) {
             // 로그인 실패

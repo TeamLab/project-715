@@ -6,14 +6,14 @@ const bcrypt = require('bcryptjs');
 var mysql = require('mysql');
 // Connection 객체 생성 
 var connection = mysql.createConnection({
-  host: 'localhost',
+  host: 'rsv715.cw0mqhawwwhk.ap-northeast-2.rds.amazonaws.com',
   port: 3306,
-  user: 'root',   
-  password: '158746',
-  database: '715job'  
+  user: 'admin',   
+  password: 'pknu715job',
+  database: 'rsv715'  
 });  
 // Connect
-connection.connect(function (err) {   
+connection.connect(function (err) {
   if (err) {     
     console.error('mysql connection error');     
     console.error(err);     
@@ -21,13 +21,13 @@ connection.connect(function (err) {
   } 
 });
 
-// router.get('/', function (req, res) {
-//   connection.query('SELECT * FROM users', function (err, rows) {
-//     if (err) throw err;
-//     res.send(rows);
-//   });
-// });
-router.post('/user/signup', function (req, res) {
+router.get('/', function (req, res) {
+  connection.query('SELECT * FROM users', function (err, rows) {
+    if (err) throw err;
+    res.send(rows);
+  });
+});
+router.post('/signUp', function (req, res) {
   const user = {
     'userid': req.body.user.userid,
     'password': req.body.user.password,
@@ -58,7 +58,7 @@ router.post('/user/signup', function (req, res) {
     }
   });
 });
-router.post('/user/login', function (req, res) {
+router.post('/login', function (req, res) {
   const user = {
     'userid': req.body.user.userid,
     'password': req.body.user.password
