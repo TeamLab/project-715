@@ -51,7 +51,7 @@ export default {
       })
         .then((res) => {
           if (res.data.success === true) {
-            // 로그인 성공
+            // 로그인 성공 
             alert(res.data.message)
             this.$router.push('/')
           }
