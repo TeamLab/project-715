@@ -21,12 +21,13 @@ connection.connect(function (err) {
   } 
 });
 
-router.get('/', function (req, res) {
-  connection.query('SELECT * FROM users', function (err, rows) {
-    if (err) throw err;
-    res.send(rows);
-  });
-});
+// router.get('/', function (req, res) {
+//   connection.query('SELECT * FROM users', function (err, rows) {
+//     if (err) throw err;
+//     res.send(rows);
+//   });
+// });
+
 router.post('/signUp', function (req, res) {
   const user = {
     'userid': req.body.user.userid,
@@ -39,6 +40,7 @@ router.post('/signUp', function (req, res) {
     'email': req.body.user.email
   };
   connection.query('SELECT userid FROM users WHERE userid = "' + user.userid + '"', function (err, row) {
+    console.log(row)
     if (row[0] == undefined){ //  동일한 아이디가 없을경우,
       const salt = bcrypt.genSaltSync();
       const encryptedPassword = bcrypt.hashSync(user.password, salt);
@@ -48,7 +50,8 @@ router.post('/signUp', function (req, res) {
       res.json({
         success: true,
         message: '회원가입이 완료되었습니다!'
-      })
+      });
+      console.log(router)
     }
     else {
       res.json({
@@ -58,13 +61,15 @@ router.post('/signUp', function (req, res) {
     }
   });
 });
-router.post('/login', function (req, res) {
+router.post('/logIn', function (req, res) {
   const user = {
     'userid': req.body.user.userid,
     'password': req.body.user.password
   };
   connection.query('SELECT userid, password FROM users WHERE userid = "' + user.userid + '"', function (err, row) {
-    if (err) {
+    console.log(row)
+    if (row[0] == undefined) {
+      console.log('aa')
       res.json({ // 매칭되는 아이디 없을 경우
         success: false,
         message: 'ID 또는 비밀번호를 잘못 입력했습니다. 다시 확인해주세요!'
@@ -76,7 +81,7 @@ router.post('/login', function (req, res) {
           res.json({ // 로그인 성공 
             success: true,
             message: '로그인에 성공했습니다!'
-          })
+          });
         }
         else {
           res.json({ // 매칭되는 아이디는 있으나, 비밀번호가 틀린 경우            

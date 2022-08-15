@@ -13,7 +13,7 @@ const routes = [
   {
     path: '/user/login',
     name: 'LogInView',
-    component: () => import(/* webpackChunkName: "user", webpackPrefetch:true */ '../views/user/LogInView.vue')
+    component: () => import(/* webpackChunkName: "user" */ '../views/user/LogInView.vue')
   },
   {
     path: '/user/signup',

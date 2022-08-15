@@ -18,7 +18,7 @@
           </div>
           <div class="loginButton">
             <!-- <input type="submit" value="로그인"> -->
-            <button @click="login">로그인</button>
+            <button @click="logIn">로그인</button>
           </div>
         </form>
         <div class="findButtons">
@@ -45,14 +45,15 @@ export default {
     }
   },
   methods: {
-    login(event) {
-      this.$http.post('/api/users/login', {
+    logIn(event) {
+      this.$http.post('/api/users/logIn', {
         user: this.user
       })
         .then((res) => {
           if (res.data.success === true) {
-            // 로그인 성공 
+            // 로그인 성공
             alert(res.data.message)
+            console.log('A')
             this.$router.push('/')
           }
           if (res.data.success === false) {
@@ -67,6 +68,29 @@ export default {
         })
     }
   }
+  // methods: {
+  //   logIn(event) {
+  //     console.log(this.$router)
+  //     this.$http.post('/api/users/logIn', {
+  //       user: this.user
+  //     })
+  //       .then(
+  //         (res) => {
+  //           // 로그인 성공
+  //           alert(res.data.message)
+  //           this.$router.push('/')
+  //         },
+  //         (err) => {
+  //           console.log(err)
+  //           // error를 보여줌
+  //           alert('ID 또는 비밀번호를 잘못 입력했습니다. 다시 확인해주세요!')
+  //         }
+  //       )
+  //       .catch((err) => {
+  //         alert(err)
+  //       })
+  //   }
+  // }
 }
 </script>
 

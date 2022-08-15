@@ -104,7 +104,7 @@ export default {
   },
   methods: {
     signUp(event) {
-      this.$http.post('/api/users/signup', {
+      this.$http.post('/api/users/signUp', {
         user: this.user
       })
         .then((res) => {
