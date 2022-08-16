@@ -53,6 +53,7 @@
             ><span class="text-orangered">*</span> 이용시작시각</span
           >
           <input
+            ref="startTime"
             class="input-text-readonly"
             type="text"
             :value="start_time + ' : 00'"
@@ -103,7 +104,7 @@
         <h1>유의사항</h1>
       </div>
       <div class="notice-contents">
-        <div style="margin-bottom: 24px">
+        <div style="margin-bottom: 36px">
           <p>
             1. 715호 협업룸에서 이용한 물품 및 설비는 이용 후 반드시 제자리에
             둔다.
@@ -122,13 +123,16 @@
           </p>
         </div>
       </div>
+      <div style="color:red;font-size:14px;text-align:center" v-if="(this.start_time === '00' || this.end_time === '00')">이용시각을 선택해주세요.</div>
       <div class="confirm-note">
         <input
           class="confirm-note-checkbox"
           type="checkbox"
           v-model="isChecked"
+          :disabled="(this.start_time === '00' || this.end_time === '00')"
+          @click="getAlert"
         />
-        <div class="confirm-note-text">위의 사항에 동의합니다.</div>
+        <div id="agreeText" class="confirm-note-text">위의 사항에 동의합니다.</div>
       </div>
       <div class="rsv-button">
         <router-link to="/rsvcomplete" style="text-decoration: none">
@@ -137,6 +141,7 @@
             :ripple="false"
             color="#002448"
             :disabled="!isChecked"
+            @click="checkAll"
           >
             <span style="color: white">예약하기</span>
           </v-btn>
@@ -233,6 +238,11 @@ export default {
             this.blue(j)
           }
         }
+      }
+    },
+    getAlert() {
+      if (this.start_time === '00' || this.end_time === '00') {
+        document.getElementById('agreeText')
       }
     }
   }
@@ -345,7 +355,7 @@ option {
   text-align: center;
   display: flex;
   justify-content: center;
-  margin: 36px 0px;
+  margin: 6px 0px 36px 0px;
   line-height: 100%;
 }
 .confirm-note-checkbox {
