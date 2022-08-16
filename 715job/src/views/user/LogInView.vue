@@ -32,13 +32,21 @@
   </div>
 </template>
 <script>
+// import { reactive } from 'vue'
 export default {
+  // setup() {
+  //   const state = reactive({
+  //     loggedIn: false
+  //   })
+  //   return { state }
+  // },
   data() {
     return {
       user: {
         userid: '',
         password: ''
-      }
+      },
+      loggedIn: false
     }
   },
   methods: {
@@ -50,6 +58,7 @@ export default {
           if (res.data.success === true) {
             // 로그인 성공
             alert(res.data.message)
+            this.loggedIn = true
             this.$router.push('/')
           }
           if (res.data.success === false) {

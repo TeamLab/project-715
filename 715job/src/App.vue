@@ -15,8 +15,9 @@
         </div>
       </router-link>
       <v-spacer></v-spacer>
-      <router-link to="/user/login" style="text-decoration: none; color: white">
+      <router-link to="/user/login" style="text-decoration: none;">
         <v-btn
+          v-if="!loggedIn"
           class="mr-4"
           dark
           color="#002448"
@@ -25,6 +26,33 @@
           :style="{ 'border-radius': '15px', 'font-family': 'Fira Sans' }"
         >
           <span>Login</span>
+        </v-btn>
+      </router-link>
+      <router-link to="/" style="text-decoration: none;">
+        <v-btn
+          v-if="loggedIn"
+          class="mr-4"
+          color="#002448"
+          height="45px"
+          width="100px"
+          outlined
+          elevation="1"
+          :style="{ 'border-radius': '15px', 'font-family': 'Fira Sans' }"
+        >
+          <span>Logout</span>
+        </v-btn>
+      </router-link>
+      <router-link to="/mypage" style="text-decoration: none;">
+        <v-btn
+          v-if="loggedIn"
+          dark
+          class="mr-4"
+          color="#002448"
+          height="45px"
+          width="100px"
+          :style="{ 'border-radius': '15px', 'font-family': 'Fira Sans' }"
+        >
+          <span>My Page</span>
         </v-btn>
       </router-link>
     </v-app-bar>
@@ -45,13 +73,14 @@
 </template>
 
 <script>
+// import LoginInView from './views/user/LogInView.vue'
 export default {
   name: 'App',
-
   data() {
     return {
       isMain: true,
-      isNotMain: false
+      isNotMain: false,
+      loggedIn: false
     }
   },
   methods: {
