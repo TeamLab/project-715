@@ -3,7 +3,6 @@
     <div class="main">
       <div class="loginHead">로그인</div>
       <div class="loginContents">
-        <form action="" method=”post” enctype=”multipart/form-data”>
           <div class="idBox">
             <v-text-field type="text" id="id" class="v_text_input" v-model="user.userid" label="아이디" autocomplete='off'></v-text-field>
           </div>
@@ -17,10 +16,8 @@
             ></v-text-field>
           </div>
           <div class="loginButton">
-            <!-- <input type="submit" value="로그인"> -->
             <button @click="logIn">로그인</button>
           </div>
-        </form>
         <div class="findButtons">
           <ul class="findButtonLists">
             <li><router-link to="/user/findid">아이디 찾기</router-link></li>
@@ -53,44 +50,18 @@ export default {
           if (res.data.success === true) {
             // 로그인 성공
             alert(res.data.message)
-            console.log('A')
             this.$router.push('/')
           }
           if (res.data.success === false) {
             // 로그인 실패
             alert(res.data.message)
-            console.log('B')
           }
         })
         .catch((err) => {
-          console.log('C')
           alert(err)
         })
     }
   }
-  // methods: {
-  //   logIn(event) {
-  //     console.log(this.$router)
-  //     this.$http.post('/api/users/logIn', {
-  //       user: this.user
-  //     })
-  //       .then(
-  //         (res) => {
-  //           // 로그인 성공
-  //           alert(res.data.message)
-  //           this.$router.push('/')
-  //         },
-  //         (err) => {
-  //           console.log(err)
-  //           // error를 보여줌
-  //           alert('ID 또는 비밀번호를 잘못 입력했습니다. 다시 확인해주세요!')
-  //         }
-  //       )
-  //       .catch((err) => {
-  //         alert(err)
-  //       })
-  //   }
-  // }
 }
 </script>
 
@@ -123,7 +94,7 @@ a:visited {
 .loginContents {
   margin-top: 98px;
 }
-.loginContents > form > .idBox,
+.loginContents > .idBox,
 .passwordBox,
 .loginButton {
   margin: auto;

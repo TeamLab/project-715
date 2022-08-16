@@ -27,23 +27,6 @@ connection.connect(function (err) {
     throw err;   
   } 
 });
-// insert
-app.post('/regist', function (req, res) {
-  var user = {
-    'userid': req.body.userid,
-    'name': req.body.name,
-    'address': req.body.address
-  };
-  var query = connection.query('insert into users set ?', user, function (err, result) {
-    if (err) {
-      console.error(err);
-      console.log('a');
-      throw err;
-    }
-    res.status(200).send('success');
-  });
-});
-// 까지
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
