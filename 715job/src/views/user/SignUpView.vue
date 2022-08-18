@@ -82,6 +82,7 @@
   </div>
 </template>
 <script>
+import axios from 'axios'
 export default {
   components: {},
   data() {
@@ -104,14 +105,13 @@ export default {
   },
   methods: {
     signUp(event) {
-      this.$http.post('/api/users/signUp', {
+      axios.post('/api/users/signUp', {
         user: this.user
       })
         .then((res) => {
           if (res.data.success === true) {
             alert(res.data.message)
             this.$router.push('/')
-            console.log('A')
           }
           if (res.data.success === false) {
             alert(res.data.message)

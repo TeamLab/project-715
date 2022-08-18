@@ -21,46 +21,7 @@ connection.connect(function (err) {
   } 
 });
 
-// router.get('/', function (req, res) {
-//   connection.query('SELECT * FROM users', function (err, rows) {
-//     if (err) throw err;
-//     res.send(rows);
-//   });
-// });
-
-
-router.post('/logIn', function (req, res) {
-  const user = {
-    'userid': req.body.user.userid,
-    'password': req.body.user.password
-  };
-  connection.query('SELECT userid, password FROM users WHERE userid = "' + user.userid + '"', function (err, row) {
-    if (row[0] !== undefined && row[0].userid === user.userid) {
-      bcrypt.compare(user.password, row[0].password, function (err, res2) {
-        if (res2 === true) {
-          res.json({ // 로그인 성공 
-            success: true,
-            message: '로그인에 성공했습니다!'
-          });
-        }
-        else {
-          res.json({ // 매칭되는 아이디는 있으나, 비밀번호가 틀린 경우            
-            success: false,
-            message: 'ID 또는 비밀번호를 잘못 입력했습니다. 다시 확인해주세요!'
-          });
-        }
-      })
-    } else {
-      console.log('aa')
-      res.json({ // 매칭되는 아이디 없을 경우
-        success: false,
-        message: 'ID 또는 비밀번호를 잘못 입력했습니다. 다시 확인해주세요!'
-      })
-    }
-    
-  })
-});
-
+// Sign Up
 router.post('/signUp', function (req, res) {
   const user = {
     'userid': req.body.user.userid,
@@ -92,4 +53,69 @@ router.post('/signUp', function (req, res) {
     }
   });
 });
+
+let isloggedin = 0;
+
+// Log In
+router.post('/logIn', function (req, res) {
+  const user = {
+    'userid': req.body.user.userid,
+    'password': req.body.user.password,
+    'loggedin': req.body.user.loggedin
+  };
+
+  isloggedin = 1;
+  connection.query('SELECT userid, password FROM users WHERE userid = "' + user.userid + '"', function (err, row) {
+    if (row[0] !== undefined && row[0].userid === user.userid) {
+      bcrypt.compare(user.password, row[0].password, function (err, res2) {
+        if (res2 === true) {
+          connection.query('UPDATE users SET loggedin="' + isloggedin + '" WHERE userid="' + user.userid + '"', user, function (err, row2) {
+            if (err) throw err;
+          });
+          res.json({ // 로그인 성공 
+            success: true,
+            message: '로그인에 성공했습니다!'
+          });
+        }
+        else {
+          res.json({ // 매칭되는 아이디는 있으나, 비밀번호가 틀린 경우            
+            success: false,
+            message: 'ID 또는 비밀번호를 잘못 입력했습니다. 다시 확인해주세요!'
+          });
+        }
+      })
+    } else {
+      res.json({ // 매칭되는 아이디 없을 경우
+        success: false,
+        message: 'ID 또는 비밀번호를 잘못 입력했습니다. 다시 확인해주세요!'
+      })
+    }
+  });
+});
+
+// 로그인 되어 있는지
+router.post('/', function (req, res) {
+  connection.query('SELECT userid, loggedin FROM users WHERE loggedin=' + isloggedin, function (err, row) {
+    if (err) throw err;
+    res.send(row[0]);
+  });
+});
+
+// Log Out
+router.post('/logOut', function (req, res) {
+  const user = {
+    'userid': req.body.user.userid,
+    'loggedin': req.body.user.loggedin
+  };
+  isloggedin = 0;
+
+  connection.query('UPDATE users SET loggedin="' + isloggedin + '" WHERE userid="' + user.userid + '"', user, function (err, row) {
+    if (err) throw err;
+  })
+  connection.query('SELECT userid, loggedin FROM users WHERE loggedin=' + isloggedin, user, function (err, row) {
+    if (err) throw err;
+    res.send(row[0])
+  })
+})
+
 module.exports = router;
