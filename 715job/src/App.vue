@@ -15,8 +15,9 @@
         </div>
       </router-link>
       <v-spacer></v-spacer>
-      <router-link to="/user/login" style="text-decoration: none; color: white">
+      <router-link to="/user/login" style="text-decoration: none;">
         <v-btn
+          v-if="!user.loggedin"
           class="mr-4"
           dark
           color="#002448"
@@ -25,6 +26,34 @@
           :style="{ 'border-radius': '15px', 'font-family': 'Fira Sans' }"
         >
           <span>Login</span>
+        </v-btn>
+      </router-link>
+      <router-link to="/" style="text-decoration: none;">
+        <v-btn
+          v-if="user.loggedin"
+          class="mr-4"
+          color="#002448"
+          height="45px"
+          width="100px"
+          outlined
+          elevation="1"
+          :style="{ 'border-radius': '15px', 'font-family': 'Fira Sans' }"
+          @click="logOut"
+        >
+          <span>Logout</span>
+        </v-btn>
+      </router-link>
+      <router-link to="/mypage" style="text-decoration: none;">
+        <v-btn
+          v-if="user.loggedin"
+          dark
+          class="mr-4"
+          color="#002448"
+          height="45px"
+          width="100px"
+          :style="{ 'border-radius': '15px', 'font-family': 'Fira Sans' }"
+        >
+          <span>My Page</span>
         </v-btn>
       </router-link>
     </v-app-bar>
@@ -45,16 +74,33 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'App',
-
   data() {
     return {
       isMain: true,
-      isNotMain: false
+      isNotMain: false,
+      user: []
     }
   },
+  mounted() {
+    axios.post('/api/users').then((res) => {
+      this.user = res.data
+    })
+  },
   methods: {
+    logOut(event) {
+      console.log(this.user.userid)
+      axios.post('/api/users/logOut', {
+        user: this.user
+      })
+        .then((res) => {
+          // 로그아웃 성공
+          this.user = res.data
+          this.$router.push('/').catch(() => {})
+        })
+    },
     backToMain() {
       window.scrollTo({
         top: 0,
@@ -68,6 +114,12 @@ export default {
       if (to.path !== '/' && from.path === '/') {
         this.isMain = false
         this.isNotMain = true
+      } else if (to.path === '/' && from.path === '/user/login') {
+        this.isMain = true
+        this.isNotMain = false
+        axios.post('/api/users').then((res) => {
+          this.user = res.data
+        })
       } else if (to.path === '/' && from.path !== '/') {
         this.isMain = true
         this.isNotMain = false

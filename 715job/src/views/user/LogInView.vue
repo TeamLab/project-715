@@ -32,6 +32,7 @@
   </div>
 </template>
 <script>
+import axios from 'axios'
 export default {
   data() {
     return {
@@ -43,7 +44,7 @@ export default {
   },
   methods: {
     logIn(event) {
-      this.$http.post('/api/users/logIn', {
+      axios.post('/api/users/logIn', {
         user: this.user
       })
         .then((res) => {

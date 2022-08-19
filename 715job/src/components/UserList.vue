@@ -6,7 +6,7 @@
         <dt>아이디</dt>
         <dd>{{ user.userid }}</dd>
         <dt>이름</dt>
-        <dd>{{ user.name }}</dd>
+        <dd>{{ user.loggedin }}</dd>
       </dl>
     </div>
   </div>
