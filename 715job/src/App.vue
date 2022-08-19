@@ -15,7 +15,7 @@
         </div>
       </router-link>
       <v-spacer></v-spacer>
-      <router-link to="/user/login" style="text-decoration: none;">
+      <router-link to="/user/login" style="text-decoration: none">
         <v-btn
           v-if="!user.loggedin"
           class="mr-4"
@@ -28,7 +28,7 @@
           <span>Login</span>
         </v-btn>
       </router-link>
-      <router-link to="/" style="text-decoration: none;">
+      <router-link to="/" style="text-decoration: none">
         <v-btn
           v-if="user.loggedin"
           class="mr-4"
@@ -43,7 +43,7 @@
           <span>Logout</span>
         </v-btn>
       </router-link>
-      <router-link to="/mypage" style="text-decoration: none;">
+      <router-link to="/mypage" style="text-decoration: none">
         <v-btn
           v-if="user.loggedin"
           dark
@@ -92,9 +92,10 @@ export default {
   methods: {
     logOut(event) {
       console.log(this.user.userid)
-      axios.post('/api/users/logOut', {
-        user: this.user
-      })
+      axios
+        .post('/api/users/logOut', {
+          user: this.user
+        })
         .then((res) => {
           // 로그아웃 성공
           this.user = res.data
