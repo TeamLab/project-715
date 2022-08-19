@@ -55,6 +55,7 @@ router.post('/signUp', function (req, res) {
 });
 
 let isloggedin = 0;
+let loggedinuserid = '';
 
 // Log In
 router.post('/logIn', function (req, res) {
@@ -76,6 +77,7 @@ router.post('/logIn', function (req, res) {
             success: true,
             message: '로그인에 성공했습니다!'
           });
+          loggedinuserid = user.userid;
         }
         else {
           res.json({ // 매칭되는 아이디는 있으나, 비밀번호가 틀린 경우            
@@ -95,27 +97,59 @@ router.post('/logIn', function (req, res) {
 
 // 로그인 되어 있는지
 router.post('/', function (req, res) {
-  connection.query('SELECT userid, loggedin FROM users WHERE loggedin=' + isloggedin, function (err, row) {
-    if (err) throw err;
-    res.send(row[0]);
+  // connection.query('SELECT userid, loggedin FROM users WHERE loggedin=' + isloggedin, function (err, row) {
+  //   if (err) throw err;
+  //   res.send(row[0]);
+  // });
+  res.json({      
+    loggedinuserid: loggedinuserid,
+    isloggedin: isloggedin
   });
 });
 
 // Log Out
 router.post('/logOut', function (req, res) {
   const user = {
-    'userid': req.body.user.userid,
-    'loggedin': req.body.user.loggedin
+    'userid': req.body.user
   };
   isloggedin = 0;
-
+  loggedinuserid = '';
   connection.query('UPDATE users SET loggedin="' + isloggedin + '" WHERE userid="' + user.userid + '"', user, function (err, row) {
     if (err) throw err;
   })
-  connection.query('SELECT userid, loggedin FROM users WHERE loggedin=' + isloggedin, user, function (err, row) {
+  res.json({      
+    loggedinuserid: loggedinuserid,
+    isloggedin: isloggedin
+  });
+});
+
+// rsv 기본 입력
+router.post('/rsv', function (req, res) {
+  connection.query('SELECT userid, name FROM users WHERE userid="' + loggedinuserid + '"', function (err, row) {
     if (err) throw err;
-    res.send(row[0])
-  })
-})
+    res.send(row[0]);
+  });
+});
+
+// make Rsv
+router.post('/makeRsv', function (req, res) {
+  const rsv = {
+    'userid': req.body.rsv.userid,
+    'name': req.body.rsv.name,
+    'rsvdate': req.body.rsv.rsvdate,
+    // 'rsvstarttime': req.body.rsv.rsvstarttime,
+    // 'rsvendtime': req.body.rsv.rsvendtime,
+    'tablenumber': req.body.rsv.tablenumber
+    // 'numofrsvpeople': req.body.rsv.numofrsvpeople,
+    // 'rsvtext': req.body.rsv.rsvtext
+  };
+  const rsvstarttime = req.body.start_time;
+  const rsvendtime = req.body.end_time;
+  const numofrsvpeople = req.body.numofrsvpeople;
+  const rsvtext = req.body.rsvtext;
+  connection.query('INSERT INTO rsvs (userid, name, rsvdate, rsvstarttime, rsvendtime, tablenumber, numofrsvpeople, rsvtext) VALUES ("' + rsv.userid + '","' + rsv.name + '","' + rsv.rsvdate + '","' + rsvstarttime + '","' + rsvendtime + '","' + rsv.tablenumber + '","' + numofrsvpeople + '","' + rsvtext + '")', rsv, function (err, row) {
+    if (err) throw err;
+  });
+});
 
 module.exports = router;
