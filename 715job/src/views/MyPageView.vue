@@ -1,5 +1,5 @@
 <template>
-<div class="main">
+<div class="mypage">
   <div class="left-box">
     <div class="left-box-inner">
       <div class="left-box-profile">
@@ -56,8 +56,10 @@ export default {
   text-decoration: none;
   list-style: none;
 }
-.main {
+.mypage {
   width: 70%;
+  max-width: 900px;
+  min-width: 450px;
   height: 50%;
   margin: auto;
   display: flex;
