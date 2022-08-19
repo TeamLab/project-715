@@ -12,7 +12,7 @@
               label="직책"
               dense
               outlined
-              :style='{"padding-top":"20px", "padding-left":"20px", "padding-right":"20px", "width":"200px"}'
+              :style='{"padding-top":"20px", "padding-left":"20px", "padding-right":"20px", "width":"50%"}'
             ></v-select>
 
             <v-text-field

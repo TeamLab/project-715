@@ -59,7 +59,7 @@ export default {
 .mypage {
   width: 70%;
   max-width: 900px;
-  min-width: 450px;
+  min-width: 550px;
   height: 50%;
   margin: auto;
   display: flex;
@@ -68,32 +68,25 @@ export default {
 }
 .left-box{
   float:left;
-  width:30%;
-  height:500px;
+  width:25%;
+  /* height:500px; */
   display: flex;
   justify-content: center;
   position: relative;
   padding-top:10%;
 }
-.left-box-inner{
-  display: flex;
-  justify-content: center;
-  position: relative;
-  width:70%;
-  height:500px;
-  background-color: rgb(255, 255, 255);
-}
 .left-box-profile{
+  width:90%;
   justify-content: center;
   position: relative;
-  padding-top:45%;
+  padding-top:75%;
 }
 .guest-img{
-  width: 150px;
+  width: 100%;
 }
 .my-name{
   text-align: center;
-  font-size: 80%;
+  font-size: 100%;
   text-decoration: underline;
 }
 #select-info{
