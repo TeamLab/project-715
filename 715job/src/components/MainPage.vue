@@ -35,10 +35,10 @@ export default {
   methods: {
     onEmit() {
       axios.post('/api/users').then((res) => {
-        console.log(res.data.isloggedin)
-        this.isloggedin = res.data.isloggedin
+        this.isloggedin = res.data.loggedin
         if (this.isloggedin === 0) {
-          alert('로그인하세요')
+          alert('로그인 후 이용해주세요!')
+          this.$router.push('/user/login')
         } else {
           this.$emit('setBooking', this.isBooking)
         }

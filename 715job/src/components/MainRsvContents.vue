@@ -205,6 +205,42 @@ export default {
         name: '',
         rsvdate: this.RsvDate,
         tablenumber: this.RsvTable
+      },
+      existingrsv: [],
+      existingtime: []
+    }
+  },
+  watch: {
+    RsvDate() {
+      axios.post('/api/users/existingRsv', {
+        rsvdate: this.RsvDate,
+        tablenumber: this.RsvTable
+      }).then((res) => {
+        this.existingrsv = res.data
+      })
+    },
+    RsvTable() {
+      axios.post('/api/users/existingRsv', {
+        rsvdate: this.RsvDate,
+        tablenumber: this.RsvTable
+      }).then((res) => {
+        this.existingrsv = res.data
+      })
+    },
+    existingrsv() {
+      for (let i = 1; i <= 23; i++) {
+        this.gray(i)
+        const el = document.getElementById('timetable-btn-' + i)
+        el.disabled = false
+      }
+      this.existingtime = []
+      for (let j = 0; j < this.existingrsv.length; j++) {
+        for (let k = Number(this.existingrsv[j].rsvstarttime); k < Number(this.existingrsv[j].rsvendtime); k++) {
+          this.red(k)
+          const el = document.getElementById('timetable-btn-' + k)
+          el.disabled = true
+          this.existingtime.push(k)
+        }
       }
     }
   },
@@ -214,6 +250,12 @@ export default {
       this.rsv.userid = res.data.userid
       this.rsv.name = res.data.name
     })
+    axios.post('/api/users/existingRsv', {
+      rsvdate: this.RsvDate,
+      tablenumber: this.RsvTable
+    }).then((res) => {
+      this.existingrsv = res.data
+    })
   },
   methods: {
     blue(i) {
@@ -222,39 +264,41 @@ export default {
     gray(i) {
       this.colors[i] = '#d9d9d9'
     },
+    red(i) {
+      this.colors[i] = '#E47F7C'
+    },
     setStartTime(i) {
       // 시작시각 설정
       this.start_time = i
     },
     setEndTime(i) {
-      // 종료시각 설정 및 화면에 표시되는 종료시각 설정
       this.end_time = i
-      this.display_end_time = Number(this.end_time) + 1 // 클릭은 버튼 14를 클릭하지만 종료시각은 15시00분이기 때문에 + 1 해줌
+      this.display_end_time = Number(this.end_time) + 1
     },
     pickTime(i) {
-      this.count += 1 // click 하면 count + 1
+      this.count += 1
       if (this.count % 2 === 1) {
-        // count가 홀수면
-        this.setStartTime(i) // 시작시각을 클릭한 시각으로 설정하고
+        this.setStartTime(i)
         for (let j = 1; j <= 23; j++) {
-          // 클릭한 시각 이외는 전부 회색으로 해라
-          this.gray(j)
+          if (!this.existingtime.includes(j)) {
+            this.gray(j)
+          }
         }
-        this.blue(this.start_time) // 클릭한 시각은 파란색으로 해라
+        this.blue(this.start_time)
       } else {
-        // count가 짝수면
         if (i < this.start_time) {
-          // 근데 만약 클릭한 시각이 기존에 정해졌던 시작시각보다 이전의 시각이면
-          this.count = this.count - 1 // count - 1
-          this.gray(this.start_time) // 기존에 선택한 시작시각은 회색으로 하고
-          this.setStartTime(i) // 클릭한 시각으로 시작시각을 새롭게 설정해라
-          this.blue(this.start_time) // 그리고 클릭한 시각은 파란색으로 해라
+          this.count = this.count - 1
+          this.gray(this.start_time)
+          this.setStartTime(i)
+          this.blue(this.start_time)
         } else {
-          // 클릭한 시각이 기존에 정해졌던 시작시각보다 이후의 시각이면
-          this.setEndTime(i) // 그 시각을 종료시각으로 설정해라
+          this.setEndTime(i)
           for (let j = this.start_time; j <= this.end_time; j++) {
-            // 그리고 시작시각부터 종료시각까지 전부 파란색으로 해라
-            this.blue(j)
+            if (!this.existingtime.includes(j)) {
+              this.blue(j)
+            } else {
+              j = this.end_time
+            }
           }
         }
       }

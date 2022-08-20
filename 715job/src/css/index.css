@@ -8,6 +8,11 @@
   font-style: normal;
 }
 
+body {
+  overflow-y: auto;
+  overflow-x: scroll;
+}
+
 main {
   font-family: 'MICEGothic Bold';
   font-size: large;

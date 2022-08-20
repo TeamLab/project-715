@@ -75,7 +75,6 @@ export default {
 .right-box{
   background: rgb(255, 255, 255);
   width:70%;
-  height:500px;
   float:right;
   padding-top:10%;
 }
@@ -86,10 +85,6 @@ export default {
   display: flex;
   align-items: center;
   height:10%;
-  padding-left:10%;
-}
-.right-box-psninfo-table{
-  padding-left:7%;
 }
 .right-box-psninfo{
   background-color: rgb(0, 36, 72);

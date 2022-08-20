@@ -28,6 +28,7 @@
           v-model="focus"
           color="#769fcd"
           @click:date="showFloorPlan"
+          :disabled-dates='{ weekdays: [1, 7] }'
         ></v-calendar>
       </v-sheet>
     </v-col>
@@ -54,6 +55,13 @@ export default {
       focus: ''
     }
   },
+  mounted () {
+    const date = document.getElementsByClassName('v-past')
+    for (let i = 0; i < date.length; i++) {
+      date[i].children[0].children[0].disabled = true
+      date[i].style.backgroundColor = '#f7f7f7'
+    }
+  },
   methods: {
     disablePastDates(val) {
       return val >= new Date().toISOString().substr(0, 10)
@@ -61,7 +69,6 @@ export default {
     allowedDates: (val) => parseInt(val.split('-')[2], 10) % 2 === 0,
     setToday() {
       this.focus = ''
-      console.log(this.$refs.calendar)
     },
     prev() {
       this.$refs.calendar.prev()
