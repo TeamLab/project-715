@@ -93,17 +93,10 @@ export default {
   },
   methods: {
     logOut(event) {
-<<<<<<< HEAD
-      console.log(this.user.userid)
       axios
         .post('/api/users/logOut', {
-          user: this.user
+          user: this.loggedinuserid
         })
-=======
-      axios.post('/api/users/logOut', {
-        user: this.loggedinuserid
-      })
->>>>>>> 1abc96b2f6979d2b1f2a2d562acd90e081440a3a
         .then((res) => {
           // 로그아웃 성공
           this.loggedinuserid = res.data.loggedinuserid
