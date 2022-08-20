@@ -137,11 +137,7 @@ router.post('/makeRsv', function (req, res) {
     'userid': req.body.rsv.userid,
     'name': req.body.rsv.name,
     'rsvdate': req.body.rsv.rsvdate,
-    // 'rsvstarttime': req.body.rsv.rsvstarttime,
-    // 'rsvendtime': req.body.rsv.rsvendtime,
     'tablenumber': req.body.rsv.tablenumber
-    // 'numofrsvpeople': req.body.rsv.numofrsvpeople,
-    // 'rsvtext': req.body.rsv.rsvtext
   };
   const rsvstarttime = req.body.start_time;
   const rsvendtime = req.body.end_time;
