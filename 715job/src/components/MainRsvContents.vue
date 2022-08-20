@@ -217,6 +217,9 @@ export default {
     gray(i) {
       this.colors[i] = '#d9d9d9'
     },
+    red(i) {
+      this.colors[i] = '#D9866C'
+    },
     setStartTime(i) {
       // 시작시각 설정
       this.start_time = i
