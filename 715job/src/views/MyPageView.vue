@@ -1,14 +1,12 @@
 <template>
 <div class="mypage">
   <div class="left-box">
-    <div class="left-box-inner">
-      <div class="left-box-profile">
-        <img class="guest-img" src="@/assets/guest-img.png" alt="guest">
-        <p class="my-name">황부현</p>
-        <div id="select-info">
-          <div class="select-info" id="select-rsvinfo"><button @click="setMyRsvInfo">예약 정보</button></div>
-          <div class="select-info" id="select-profileinfo"><button @click="setPersonalInfo">개인 정보</button></div>
-        </div>
+    <div class="left-box-profile">
+      <img class="guest-img" src="@/assets/guest-img.png" alt="guest">
+      <p class="my-name">황부현</p>
+      <div id="select-info">
+        <div class="select-info" id="select-rsvinfo"><button @click="setMyRsvInfo">예약 정보</button></div>
+        <div class="select-info" id="select-profileinfo"><button @click="setPersonalInfo">개인 정보</button></div>
       </div>
     </div>
   </div>
@@ -39,14 +37,10 @@ export default {
     setPersonalInfo() {
       this.isPersonalInfo = true
       this.isMyRsvInfo = false
-      console.log('isPersonal : ' + this.isPersonalInfo)
-      console.log('isMyRsv : ' + this.isMyRsvInfo)
     },
     setMyRsvInfo() {
       this.isPersonalInfo = false
       this.isMyRsvInfo = true
-      console.log('isPersonal : ' + this.isPersonalInfo)
-      console.log('isMyRsv : ' + this.isMyRsvInfo)
     }
   }
 }
@@ -59,7 +53,9 @@ export default {
 .mypage {
   width: 70%;
   max-width: 900px;
-  min-width: 550px;
+  min-width: 600px;
+  max-height: 400px;
+  min-height: 400px;
   height: 50%;
   margin: auto;
   display: flex;
@@ -67,30 +63,25 @@ export default {
   justify-content: center;
 }
 .left-box{
-  float:left;
-  width:25%;
-  /* height:500px; */
-  display: flex;
-  justify-content: center;
-  position: relative;
-  padding-top:10%;
-}
-.left-box-profile{
-  width:90%;
-  justify-content: center;
-  position: relative;
-  padding-top:75%;
-}
-.guest-img{
-  width: 100%;
+  margin-top: 250px;
+  min-width: 225px;
 }
 .my-name{
   text-align: center;
-  font-size: 100%;
+  font-size: 30px;
   text-decoration: underline;
 }
+.guest-img{
+  width:80%;
+  display : block;
+  margin : auto;
+  padding-bottom: 10px;
+}
 #select-info{
-  padding-top: 25%;
+  width:80%;
+  display : block;
+  margin : auto;
+  padding-top: 50px;
 }
 .select-info{
   display: flex;
@@ -119,7 +110,7 @@ export default {
 .right-box{
   background: rgb(255, 255, 255);
   width:70%;
-  height:500px;
+  padding-top:250px;
   float:right;
 }
 .blank-box{
@@ -129,10 +120,6 @@ export default {
   display: flex;
   align-items: center;
   height:10%;
-  padding-left:10%;
-}
-.right-box-rsvinfo-table{
-  padding-left:7%;
 }
 .right-box-rsvinfo{
   background-color: rgb(109, 109, 255);

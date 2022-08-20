@@ -13,6 +13,7 @@
               v-model="user.password"
               label="비밀번호"
               type="password"
+              @keypress.enter="logIn"
             ></v-text-field>
           </div>
           <div class="loginButton">
@@ -43,6 +44,9 @@ export default {
     }
   },
   methods: {
+    clickLogin() {
+
+    },
     logIn(event) {
       axios.post('/api/users/logIn', {
         user: this.user
@@ -50,7 +54,6 @@ export default {
         .then((res) => {
           if (res.data.success === true) {
             // 로그인 성공
-            alert(res.data.message)
             this.$router.push('/')
           }
           if (res.data.success === false) {

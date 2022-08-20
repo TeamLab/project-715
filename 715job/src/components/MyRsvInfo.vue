@@ -6,10 +6,10 @@
       <ul class="right-box-rsvinfo-table">
         <li class="right-box-rsvinfo">&nbsp;&nbsp;예약 정보</li>
         <div class="right-box-rsvinfo-box">
-          <li class="right-box-detail-rsvinfo">2022.08.22 15:00 1번 테이블 예약 3인
-            <button class="change-rsv">수정</button>
+          <div class="right-box-detail-rsvinfo">
+            <div class="right-box-list-rsvinfo">2022.08.22 15:00 - 17:00 1번 테이블 예약 3인</div>
             <button class="change-delete">삭제</button>
-          </li>
+          </div>
         </div>
       </ul>
     </div>
@@ -24,9 +24,8 @@ export default {
 .right-box{
   background: rgb(255, 255, 255);
   width:70%;
-  height:500px;
-  float:right;
   padding-top:10%;
+  min-width: 550px;
 }
 .blank-box{
   height: 10%;
@@ -35,58 +34,41 @@ export default {
   display: flex;
   align-items: center;
   height:10%;
-  padding-left:10%;
-}
-.right-box-rsvinfo-table{
-  padding-left:7%;
 }
 .right-box-rsvinfo{
   background-color: rgb(109, 109, 255);
-  width:90%;
   height:50px;
   display: flex;
   align-items: center;
   background-color: rgb(0, 36, 72);
   color:white;
 }
-.right-box-detail-rsvinfo{
-  background-color: rgb(237, 235, 235);
-  height:50px;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-bottom: solid rgb(189, 189, 189);
-}
 .right-box-rsvinfo-box{
-  flex-wrap: wrap;
-  width:90%;
   height:350px;
-  font-size: 1.3vw;
   border-left:solid gray;
   border-right:solid gray;
   border-bottom:solid gray;
 }
-.change-rsv{
-  width: 45px;
-  font-size: 1vw;
-  border:solid gray;
-  float:right;
-  margin-left:5%;
-  padding:5px;
+.right-box-detail-rsvinfo{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(237, 235, 235);
+  height:50px;
+  border-bottom: solid rgb(189, 189, 189);
 }
-.change-rsv:hover{
-  background-color:rgb(121, 121, 121)
+.right-box-rsvinfo-table {
+  padding: 0;
+}
+.right-box-list-rsvinfo {
+  margin-left: 12px;
 }
 .change-delete{
-  width: 45px;
-  font-size: 1vw;
-  border:solid gray;
-  float:right;
-  margin-left:5%;
-  padding:5px;
+  width: 50px;
+  margin: 6px 12px;
+  border: solid gray;
 }
 .change-delete:hover{
-  background-color:rgb(121, 121, 121)
+  background-color:rgb(121, 121, 121);
 }
 </style>
