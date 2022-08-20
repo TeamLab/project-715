@@ -35,8 +35,8 @@ export default {
   methods: {
     onEmit() {
       axios.post('/api/users').then((res) => {
-        console.log(res.data.loggedin)
-        this.isloggedin = res.data.loggedin
+        console.log(res.data.isloggedin)
+        this.isloggedin = res.data.isloggedin
         if (this.isloggedin === 0) {
           alert('로그인하세요')
         } else {

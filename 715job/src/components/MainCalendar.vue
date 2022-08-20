@@ -10,14 +10,10 @@
             Today
           </v-btn>
           <v-btn fab text small color="grey darken-2" @click="prev">
-            <v-icon small>
-              mdi-chevron-left
-            </v-icon>
+            <v-icon small> mdi-chevron-left </v-icon>
           </v-btn>
           <v-btn fab text small color="grey darken-2" @click="next">
-            <v-icon small>
-              mdi-chevron-right
-            </v-icon>
+            <v-icon small> mdi-chevron-right </v-icon>
           </v-btn>
           <v-spacer></v-spacer>
           <v-toolbar-title v-if="$refs.calendar">
@@ -27,6 +23,7 @@
       </v-sheet>
       <v-sheet height="400">
         <v-calendar
+          :attributes="attrs"
           ref="calendar"
           v-model="focus"
           color="#769fcd"
@@ -44,23 +41,35 @@ export default {
   props: {
     hideDummy: Boolean
   },
-  data () {
+  data() {
     return {
+      attrs: [
+        {
+          key: 'today',
+          highlight: true,
+          dates: new Date()
+        }
+      ],
+      date: '2022-08-02',
       focus: ''
     }
   },
   methods: {
-    setToday () {
+    disablePastDates(val) {
+      return val >= new Date().toISOString().substr(0, 10)
+    },
+    allowedDates: (val) => parseInt(val.split('-')[2], 10) % 2 === 0,
+    setToday() {
       this.focus = ''
       console.log(this.$refs.calendar)
     },
-    prev () {
+    prev() {
       this.$refs.calendar.prev()
     },
-    next () {
+    next() {
       this.$refs.calendar.next()
     },
-    showFloorPlan () {
+    showFloorPlan() {
       this.$emit('isDatePicked', true, this.focus)
     }
   }
@@ -68,7 +77,7 @@ export default {
 </script>
 <style>
 .main-calendar {
-  width:70%;
+  width: 70%;
   max-width: 900px;
   margin: auto;
   padding: 0;

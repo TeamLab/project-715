@@ -82,9 +82,9 @@
             이용 인원
           </span>
           <select @change="changePeopleNum($event)" class="peopleNum">
-            <option value='2'>2</option>
-            <option value='3'>3</option>
-            <option value='4'>4</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
           </select>
         </div>
         <div class="content-box">
@@ -126,13 +126,18 @@
           </p>
         </div>
       </div>
-      <div style="color:red;font-size:14px;text-align:center" v-if="(this.start_time === '00' || this.end_time === '00')">이용시각을 선택해주세요.</div>
+      <div
+        style="color: red; font-size: 14px; text-align: center"
+        v-if="this.start_time === '00' || this.end_time === '00'"
+      >
+        이용시각을 선택해주세요.
+      </div>
       <div class="confirm-note">
         <input
           class="confirm-note-checkbox"
           type="checkbox"
           v-model="isChecked"
-          :disabled="(this.start_time === '00' || this.end_time === '00')"
+          :disabled="this.start_time === '00' || this.end_time === '00'"
         />
         <div class="confirm-note-text">위의 사항에 동의합니다.</div>
       </div>
@@ -258,13 +263,14 @@ export default {
       this.peopleNum = event.target.value
     },
     makeRsv(event) {
-      axios.post('api/users/makeRsv', {
-        rsv: this.rsv,
-        start_time: this.start_time,
-        end_time: this.display_end_time,
-        numofrsvpeople: this.peopleNum,
-        rsvtext: this.rsvtext
-      })
+      axios
+        .post('api/users/makeRsv', {
+          rsv: this.rsv,
+          start_time: this.start_time,
+          end_time: this.display_end_time,
+          numofrsvpeople: this.peopleNum,
+          rsvtext: this.rsvtext
+        })
         .catch((error) => {
           alert(error)
         })
