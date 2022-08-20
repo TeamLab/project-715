@@ -18,12 +18,14 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'MainPage',
   components: {},
   data() {
     return {
-      isBooking: true
+      isBooking: true,
+      isloggedin: 0
     }
   },
   setup() {},
@@ -32,7 +34,15 @@ export default {
   unmounted() {},
   methods: {
     onEmit() {
-      this.$emit('setBooking', this.isBooking)
+      axios.post('/api/users').then((res) => {
+        console.log(res.data.loggedin)
+        this.isloggedin = res.data.loggedin
+        if (this.isloggedin === 0) {
+          alert('로그인하세요')
+        } else {
+          this.$emit('setBooking', this.isBooking)
+        }
+      })
     }
   }
 }
