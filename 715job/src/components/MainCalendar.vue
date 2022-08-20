@@ -30,8 +30,7 @@
           ref="calendar"
           v-model="focus"
           color="#769fcd"
-          @click:date="showFloorPlan"
-          :disabled-dates='{ weekdays: [1, 7] }'
+          @click:date="showFloorPlan($event)"
         ></v-calendar>
       </v-sheet>
     </v-col>
@@ -47,7 +46,8 @@ export default {
   },
   data () {
     return {
-      focus: ''
+      focus: '',
+      displayedmonth: ''
     }
   },
   mounted () {
@@ -61,14 +61,16 @@ export default {
     setToday () {
       this.focus = ''
     },
-    prev () {
+    prev() {
       this.$refs.calendar.prev()
     },
-    next () {
+    next() {
       this.$refs.calendar.next()
     },
-    showFloorPlan () {
-      this.$emit('isDatePicked', true, this.focus)
+    showFloorPlan(event) {
+      if (String(event.month) === this.$refs.calendar.title.slice(0, 1)) {
+        this.$emit('isDatePicked', true, this.focus)
+      }
     }
   }
 }

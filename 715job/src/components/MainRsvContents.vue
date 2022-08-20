@@ -229,6 +229,9 @@ export default {
         el.disabled = false
       }
       this.existingtime = []
+      this.start_time = '00'
+      this.end_time = '00'
+      this.display_end_time = '00'
       for (let j = 0; j < this.existingrsv.length; j++) {
         for (let k = Number(this.existingrsv[j].rsvstarttime); k < Number(this.existingrsv[j].rsvendtime); k++) {
           this.red(k)
@@ -292,6 +295,7 @@ export default {
             if (!this.existingtime.includes(j)) {
               this.blue(j)
             } else {
+              this.setEndTime(j - 1)
               j = this.end_time
             }
           }
