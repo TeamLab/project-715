@@ -8,17 +8,17 @@ var mysql = require('mysql');
 var connection = mysql.createConnection({
   host: 'rsv715.cw0mqhawwwhk.ap-northeast-2.rds.amazonaws.com',
   port: 3306,
-  user: 'admin',   
+  user: 'admin',
   password: 'pknu715job',
-  database: 'rsv715'  
-});  
+  database: 'rsv715'
+});
 // Connect
 connection.connect(function (err) {
-  if (err) {     
-    console.error('mysql connection error');     
-    console.error(err);     
-    throw err;   
-  } 
+  if (err) {
+    console.error('mysql connection error');
+    console.error(err);
+    throw err;
+  }
 });
 
 // Sign Up
@@ -34,7 +34,7 @@ router.post('/signUp', function (req, res) {
     'email': req.body.user.email
   };
   connection.query('SELECT userid FROM users WHERE userid = "' + user.userid + '"', function (err, row) {
-    if (row[0] == undefined){ //  동일한 아이디가 없을경우,
+    if (row[0] == undefined) { //  동일한 아이디가 없을경우,
       const salt = bcrypt.genSaltSync();
       const encryptedPassword = bcrypt.hashSync(user.password, salt);
       connection.query('INSERT INTO users (userid,password,studentid,name,position,course,passwordanswer,email) VALUES ("' + user.userid + '","' + encryptedPassword + '","' + user.studentid + '","' + user.name + '","' + user.position + '","' + user.course + '","' + user.passwordanswer + '","' + user.email + '")', user, function (err, row2) {
@@ -61,8 +61,7 @@ let loggedinuserid = '';
 router.post('/logIn', function (req, res) {
   const user = {
     'userid': req.body.user.userid,
-    'password': req.body.user.password,
-    'loggedin': req.body.user.loggedin
+    'password': req.body.user.password
   };
 
   isloggedin = 1;
