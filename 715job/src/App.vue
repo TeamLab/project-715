@@ -17,7 +17,7 @@
       <v-spacer></v-spacer>
       <router-link to="/user/login" style="text-decoration: none">
         <v-btn
-          v-if="!user.loggedin"
+          v-if="!isloggedin"
           class="mr-4"
           dark
           color="#002448"
@@ -30,7 +30,7 @@
       </router-link>
       <router-link to="/" style="text-decoration: none">
         <v-btn
-          v-if="user.loggedin"
+          v-if="isloggedin"
           class="mr-4"
           color="#002448"
           height="45px"
@@ -45,7 +45,7 @@
       </router-link>
       <router-link to="/mypage" style="text-decoration: none">
         <v-btn
-          v-if="user.loggedin"
+          v-if="isloggedin"
           dark
           class="mr-4"
           color="#002448"
@@ -81,24 +81,33 @@ export default {
     return {
       isMain: true,
       isNotMain: false,
-      user: []
+      loggedinuserid: '',
+      isloggedin: 0
     }
   },
   mounted() {
     axios.post('/api/users').then((res) => {
-      this.user = res.data
+      this.loggedinuserid = res.data.loggedinuserid
+      this.isloggedin = res.data.isloggedin
     })
   },
   methods: {
     logOut(event) {
+<<<<<<< HEAD
       console.log(this.user.userid)
       axios
         .post('/api/users/logOut', {
           user: this.user
         })
+=======
+      axios.post('/api/users/logOut', {
+        user: this.loggedinuserid
+      })
+>>>>>>> 1abc96b2f6979d2b1f2a2d562acd90e081440a3a
         .then((res) => {
           // 로그아웃 성공
-          this.user = res.data
+          this.loggedinuserid = res.data.loggedinuserid
+          this.isloggedin = res.data.isloggedin
           this.$router.push('/').catch(() => {})
         })
     },
@@ -119,7 +128,9 @@ export default {
         this.isMain = true
         this.isNotMain = false
         axios.post('/api/users').then((res) => {
-          this.user = res.data
+          // this.user = res.data
+          this.loggedinuserid = res.data.loggedinuserid
+          this.isloggedin = res.data.isloggedin
         })
       } else if (to.path === '/' && from.path !== '/') {
         this.isMain = true

@@ -24,9 +24,10 @@
       </div>
       <div class="contents-row content-row-1">
         <div class="content-box">
-          <span class="input-title"
-            ><span class="text-orangered">*</span> 예약 날짜</span
-          >
+          <span class="input-title">
+            <span class="text-orangered">*</span>
+            예약 날짜
+          </span>
           <input
             type="text"
             id="selectedDate"
@@ -36,13 +37,14 @@
           />
         </div>
         <div class="content-box">
-          <span class="input-title"
-            ><span class="text-orangered">*</span> 예약자</span
-          >
+          <span class="input-title">
+            <span class="text-orangered">*</span>
+            예약자
+          </span>
           <input
             class="input-text-readonly"
             type="text"
-            value="권용근"
+            :value="user.name"
             readonly
           />
         </div>
@@ -75,13 +77,14 @@
       </div>
       <div class="contents-row content-row-3">
         <div class="content-box">
-          <span class="input-title"
-            ><span class="text-orangered">*</span> 이용 인원</span
-          >
-          <select class="peopleNum">
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
+          <span class="input-title">
+            <span class="text-orangered">*</span>
+            이용 인원
+          </span>
+          <select @change="changePeopleNum($event)" class="peopleNum">
+            <option value='2'>2</option>
+            <option value='3'>3</option>
+            <option value='4'>4</option>
           </select>
         </div>
         <div class="content-box">
@@ -98,7 +101,7 @@
       </div>
       <div class="contents-row-last content-row-4">
         <span class="input-title">&nbsp;&nbsp;예약 내용</span>
-        <textarea cols="2"></textarea>
+        <textarea v-model="rsvtext" cols="2"></textarea>
       </div>
       <div class="rsv-text">
         <h1>유의사항</h1>
@@ -130,9 +133,8 @@
           type="checkbox"
           v-model="isChecked"
           :disabled="(this.start_time === '00' || this.end_time === '00')"
-          @click="getAlert"
         />
-        <div id="agreeText" class="confirm-note-text">위의 사항에 동의합니다.</div>
+        <div class="confirm-note-text">위의 사항에 동의합니다.</div>
       </div>
       <div class="rsv-button">
         <router-link to="/rsvcomplete" style="text-decoration: none">
@@ -141,7 +143,7 @@
             :ripple="false"
             color="#002448"
             :disabled="!isChecked"
-            @click="checkAll"
+            @click="makeRsv"
           >
             <span style="color: white">예약하기</span>
           </v-btn>
@@ -151,6 +153,7 @@
   </div>
 </template>
 <script>
+import axios from 'axios'
 export default {
   props: {
     RsvDate: String,
@@ -188,14 +191,25 @@ export default {
       start_time: '00',
       end_time: '00',
       display_end_time: '00',
-      selected: '',
-      isChecked: false
+      isChecked: false,
+      peopleNum: '2',
+      user: [],
+      rsvtext: '',
+      rsv: {
+        userid: '',
+        name: '',
+        rsvdate: this.RsvDate,
+        tablenumber: this.RsvTable
+      }
     }
   },
-  setup() {},
-  created() {},
-  mounted() {},
-  unmounted() {},
+  mounted() {
+    axios.post('/api/users/rsv').then((res) => {
+      this.user = res.data
+      this.rsv.userid = res.data.userid
+      this.rsv.name = res.data.name
+    })
+  },
   methods: {
     blue(i) {
       this.colors[i] = '#769fcd'
@@ -240,10 +254,20 @@ export default {
         }
       }
     },
-    getAlert() {
-      if (this.start_time === '00' || this.end_time === '00') {
-        document.getElementById('agreeText')
-      }
+    changePeopleNum(event) {
+      this.peopleNum = event.target.value
+    },
+    makeRsv(event) {
+      axios.post('api/users/makeRsv', {
+        rsv: this.rsv,
+        start_time: this.start_time,
+        end_time: this.display_end_time,
+        numofrsvpeople: this.peopleNum,
+        rsvtext: this.rsvtext
+      })
+        .catch((error) => {
+          alert(error)
+        })
     }
   }
 }

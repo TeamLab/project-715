@@ -10,14 +10,6 @@
             <button class="change-rsv">수정</button>
             <button class="change-delete">삭제</button>
           </li>
-          <li class="right-box-detail-rsvinfo">2022.08.27 17:00 4번 테이블 예약 2인
-            <button class="change-rsv">수정</button>
-            <button class="change-delete">삭제</button>
-          </li>
-          <li class="right-box-detail-rsvinfo">2022.09.04 09:00 3번 테이블 예약 3인
-            <button class="change-rsv">수정</button>
-            <button class="change-delete">삭제</button>
-          </li>
         </div>
       </ul>
     </div>
@@ -67,13 +59,17 @@ export default {
   border-bottom: solid rgb(189, 189, 189);
 }
 .right-box-rsvinfo-box{
+  flex-wrap: wrap;
   width:90%;
   height:350px;
+  font-size: 1.3vw;
   border-left:solid gray;
   border-right:solid gray;
   border-bottom:solid gray;
 }
 .change-rsv{
+  width: 45px;
+  font-size: 1vw;
   border:solid gray;
   float:right;
   margin-left:5%;
@@ -83,6 +79,8 @@ export default {
   background-color:rgb(121, 121, 121)
 }
 .change-delete{
+  width: 45px;
+  font-size: 1vw;
   border:solid gray;
   float:right;
   margin-left:5%;
