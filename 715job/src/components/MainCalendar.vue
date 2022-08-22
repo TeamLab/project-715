@@ -27,8 +27,7 @@
           ref="calendar"
           v-model="focus"
           color="#769fcd"
-          @click:date="showFloorPlan"
-          :disabled-dates='{ weekdays: [1, 7] }'
+          @click:date="showFloorPlan($event)"
         ></v-calendar>
       </v-sheet>
     </v-col>
@@ -44,18 +43,10 @@ export default {
   },
   data() {
     return {
-      attrs: [
-        {
-          key: 'today',
-          highlight: true,
-          dates: new Date()
-        }
-      ],
-      date: '2022-08-02',
       focus: ''
     }
   },
-  mounted () {
+  mounted() {
     const date = document.getElementsByClassName('v-past')
     for (let i = 0; i < date.length; i++) {
       date[i].children[0].children[0].disabled = true
