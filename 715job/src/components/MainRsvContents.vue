@@ -82,9 +82,9 @@
             이용 인원
           </span>
           <select @change="changePeopleNum($event)" class="peopleNum">
-            <option value='2'>2</option>
-            <option value='3'>3</option>
-            <option value='4'>4</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
           </select>
         </div>
         <div class="content-box">
@@ -126,13 +126,18 @@
           </p>
         </div>
       </div>
-      <div style="color:red;font-size:14px;text-align:center" v-if="(this.start_time === '00' || this.end_time === '00')">이용시각을 선택해주세요.</div>
+      <div
+        style="color: red; font-size: 14px; text-align: center"
+        v-if="this.start_time === '00' || this.end_time === '00'"
+      >
+        이용시각을 선택해주세요.
+      </div>
       <div class="confirm-note">
         <input
           class="confirm-note-checkbox"
           type="checkbox"
           v-model="isChecked"
-          :disabled="(this.start_time === '00' || this.end_time === '00')"
+          :disabled="this.start_time === '00' || this.end_time === '00'"
         />
         <div class="confirm-note-text">위의 사항에 동의합니다.</div>
       </div>
@@ -202,25 +207,31 @@ export default {
         tablenumber: this.RsvTable
       },
       existingrsv: [],
-      existingtime: []
+      existingtime: [],
+      parentValue: '20',
+      rsvInfo: ''
     }
   },
   watch: {
     RsvDate() {
-      axios.post('/api/users/existingRsv', {
-        rsvdate: this.RsvDate,
-        tablenumber: this.RsvTable
-      }).then((res) => {
-        this.existingrsv = res.data
-      })
+      axios
+        .post('/api/users/existingRsv', {
+          rsvdate: this.RsvDate,
+          tablenumber: this.RsvTable
+        })
+        .then((res) => {
+          this.existingrsv = res.data
+        })
     },
     RsvTable() {
-      axios.post('/api/users/existingRsv', {
-        rsvdate: this.RsvDate,
-        tablenumber: this.RsvTable
-      }).then((res) => {
-        this.existingrsv = res.data
-      })
+      axios
+        .post('/api/users/existingRsv', {
+          rsvdate: this.RsvDate,
+          tablenumber: this.RsvTable
+        })
+        .then((res) => {
+          this.existingrsv = res.data
+        })
     },
     existingrsv() {
       for (let i = 1; i <= 23; i++) {
@@ -233,7 +244,11 @@ export default {
       this.end_time = '00'
       this.display_end_time = '00'
       for (let j = 0; j < this.existingrsv.length; j++) {
-        for (let k = Number(this.existingrsv[j].rsvstarttime); k < Number(this.existingrsv[j].rsvendtime); k++) {
+        for (
+          let k = Number(this.existingrsv[j].rsvstarttime);
+          k < Number(this.existingrsv[j].rsvendtime);
+          k++
+        ) {
           this.red(k)
           const el = document.getElementById('timetable-btn-' + k)
           el.disabled = true
@@ -248,12 +263,14 @@ export default {
       this.rsv.userid = res.data.userid
       this.rsv.name = res.data.name
     })
-    axios.post('/api/users/existingRsv', {
-      rsvdate: this.RsvDate,
-      tablenumber: this.RsvTable
-    }).then((res) => {
-      this.existingrsv = res.data
-    })
+    axios
+      .post('/api/users/existingRsv', {
+        rsvdate: this.RsvDate,
+        tablenumber: this.RsvTable
+      })
+      .then((res) => {
+        this.existingrsv = res.data
+      })
   },
   methods: {
     blue(i) {
@@ -306,16 +323,22 @@ export default {
       this.peopleNum = event.target.value
     },
     makeRsv(event) {
-      axios.post('api/users/makeRsv', {
-        rsv: this.rsv,
-        start_time: this.start_time,
-        end_time: this.display_end_time,
-        numofrsvpeople: this.peopleNum,
-        rsvtext: this.rsvtext
-      })
+      axios
+        .post('api/users/makeRsv', {
+          rsv: this.rsv,
+          start_time: this.start_time,
+          end_time: this.display_end_time,
+          numofrsvpeople: this.peopleNum,
+          rsvtext: this.rsvtext
+        })
         .catch((error) => {
           alert(error)
         })
+      axios.post('api/users/rsvInfo').then((res) => {
+        console.log(res.data.name)
+        this.rsvInfo = res.data
+        console.log(this.rsvInfo)
+      })
     }
   }
 }

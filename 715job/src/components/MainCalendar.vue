@@ -10,14 +10,10 @@
             Today
           </v-btn>
           <v-btn fab text small color="grey darken-2" @click="prev">
-            <v-icon small>
-              mdi-chevron-left
-            </v-icon>
+            <v-icon small> mdi-chevron-left </v-icon>
           </v-btn>
           <v-btn fab text small color="grey darken-2" @click="next">
-            <v-icon small>
-              mdi-chevron-right
-            </v-icon>
+            <v-icon small> mdi-chevron-right </v-icon>
           </v-btn>
           <v-spacer></v-spacer>
           <v-toolbar-title v-if="$refs.calendar">
@@ -44,13 +40,12 @@ export default {
   props: {
     hideDummy: Boolean
   },
-  data () {
+  data() {
     return {
-      focus: '',
-      displayedmonth: ''
+      focus: ''
     }
   },
-  mounted () {
+  mounted() {
     const date = document.getElementsByClassName('v-past')
     for (let i = 0; i < date.length; i++) {
       date[i].children[0].children[0].disabled = true
@@ -58,16 +53,13 @@ export default {
     }
   },
   methods: {
-    setToday () {
-      this.focus = ''
-    },
     prev() {
       this.$refs.calendar.prev()
     },
     next() {
       this.$refs.calendar.next()
     },
-    showFloorPlan(event) {
+    showFloorPlan() {
       if (String(event.month) === this.$refs.calendar.title.slice(0, 1)) {
         this.$emit('isDatePicked', true, this.focus)
       }
@@ -77,7 +69,7 @@ export default {
 </script>
 <style>
 .main-calendar {
-  width:70%;
+  width: 70%;
   max-width: 900px;
   margin: auto;
   padding: 0;
