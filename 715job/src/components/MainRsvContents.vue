@@ -207,25 +207,31 @@ export default {
         tablenumber: this.RsvTable
       },
       existingrsv: [],
-      existingtime: []
+      existingtime: [],
+      parentValue: '20',
+      rsvInfo: ''
     }
   },
   watch: {
     RsvDate() {
-      axios.post('/api/users/existingRsv', {
-        rsvdate: this.RsvDate,
-        tablenumber: this.RsvTable
-      }).then((res) => {
-        this.existingrsv = res.data
-      })
+      axios
+        .post('/api/users/existingRsv', {
+          rsvdate: this.RsvDate,
+          tablenumber: this.RsvTable
+        })
+        .then((res) => {
+          this.existingrsv = res.data
+        })
     },
     RsvTable() {
-      axios.post('/api/users/existingRsv', {
-        rsvdate: this.RsvDate,
-        tablenumber: this.RsvTable
-      }).then((res) => {
-        this.existingrsv = res.data
-      })
+      axios
+        .post('/api/users/existingRsv', {
+          rsvdate: this.RsvDate,
+          tablenumber: this.RsvTable
+        })
+        .then((res) => {
+          this.existingrsv = res.data
+        })
     },
     existingrsv() {
       for (let i = 1; i <= 23; i++) {
@@ -235,7 +241,11 @@ export default {
       }
       this.existingtime = []
       for (let j = 0; j < this.existingrsv.length; j++) {
-        for (let k = Number(this.existingrsv[j].rsvstarttime); k < Number(this.existingrsv[j].rsvendtime); k++) {
+        for (
+          let k = Number(this.existingrsv[j].rsvstarttime);
+          k < Number(this.existingrsv[j].rsvendtime);
+          k++
+        ) {
           this.red(k)
           const el = document.getElementById('timetable-btn-' + k)
           el.disabled = true
@@ -250,12 +260,14 @@ export default {
       this.rsv.userid = res.data.userid
       this.rsv.name = res.data.name
     })
-    axios.post('/api/users/existingRsv', {
-      rsvdate: this.RsvDate,
-      tablenumber: this.RsvTable
-    }).then((res) => {
-      this.existingrsv = res.data
-    })
+    axios
+      .post('/api/users/existingRsv', {
+        rsvdate: this.RsvDate,
+        tablenumber: this.RsvTable
+      })
+      .then((res) => {
+        this.existingrsv = res.data
+      })
   },
   methods: {
     blue(i) {
@@ -318,6 +330,11 @@ export default {
         .catch((error) => {
           alert(error)
         })
+      axios.post('api/users/rsvInfo').then((res) => {
+        console.log(res.data.name)
+        this.rsvInfo = res.data
+        console.log(this.rsvInfo)
+      })
     }
   }
 }

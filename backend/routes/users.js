@@ -96,7 +96,7 @@ router.post('/logIn', function (req, res) {
 
 // 로그인 되어 있는지
 router.post('/', function (req, res) {
-  res.json({      
+  res.json({
     loggedinuserid: loggedinuserid,
     isloggedin: isloggedin
   });
@@ -112,7 +112,7 @@ router.post('/logOut', function (req, res) {
   connection.query('UPDATE users SET loggedin="' + isloggedin + '" WHERE userid="' + user.userid + '"', user, function (err, row) {
     if (err) throw err;
   })
-  res.json({      
+  res.json({
     loggedinuserid: loggedinuserid,
     isloggedin: isloggedin
   });
@@ -143,12 +143,21 @@ router.post('/makeRsv', function (req, res) {
   });
 });
 
+//rsvInfo
+router.post('/rsvInfo', function (req, res) {
+  connection.query('SELECT name, rsvdate, rsvstarttime, rsvendtime, tablenumber, numofrsvpeople FROM rsvs WHERE userid="' + loggedinuserid + '"', function (err, row) {
+    if (err) throw err;
+    res.send(row);
+  });
+});
+
+
 
 // 기존에 있는 예약 전체 불러오기
 router.post('/existingRsv', function (req, res) {
   const existingRsv = {
-    'rsvdate' : req.body.rsvdate,
-    'tablenumber' : req.body.tablenumber
+    'rsvdate': req.body.rsvdate,
+    'tablenumber': req.body.tablenumber
   };
   connection.query('SELECT rsvstarttime, rsvendtime FROM rsvs WHERE rsvdate="' + existingRsv.rsvdate + '" AND tablenumber="' + existingRsv.tablenumber + '"', function (err, row) {
     if (err) throw err;
