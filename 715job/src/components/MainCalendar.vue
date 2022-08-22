@@ -23,7 +23,6 @@
       </v-sheet>
       <v-sheet height="400">
         <v-calendar
-          :attributes="attrs"
           ref="calendar"
           v-model="focus"
           color="#769fcd"
@@ -54,13 +53,6 @@ export default {
     }
   },
   methods: {
-    disablePastDates(val) {
-      return val >= new Date().toISOString().substr(0, 10)
-    },
-    allowedDates: (val) => parseInt(val.split('-')[2], 10) % 2 === 0,
-    setToday() {
-      this.focus = ''
-    },
     prev() {
       this.$refs.calendar.prev()
     },
@@ -68,7 +60,9 @@ export default {
       this.$refs.calendar.next()
     },
     showFloorPlan() {
-      this.$emit('isDatePicked', true, this.focus)
+      if (String(event.month) === this.$refs.calendar.title.slice(0, 1)) {
+        this.$emit('isDatePicked', true, this.focus)
+      }
     }
   }
 }

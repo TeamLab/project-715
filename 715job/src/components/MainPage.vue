@@ -35,7 +35,7 @@ export default {
   methods: {
     onEmit() {
       axios.post('/api/users').then((res) => {
-        this.isloggedin = res.data.loggedin
+        this.isloggedin = res.data.isloggedin
         if (this.isloggedin === 0) {
           alert('로그인 후 이용해주세요!')
           this.$router.push('/user/login')
