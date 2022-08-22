@@ -46,20 +46,23 @@ export default {
     }
   },
   mounted() {
-    const date = document.getElementsByClassName('v-past')
+    const date = document.getElementsByClassName('v-calendar-weekly__day v-past')
     for (let i = 0; i < date.length; i++) {
       date[i].children[0].children[0].disabled = true
       date[i].style.backgroundColor = '#f7f7f7'
     }
   },
   methods: {
+    setToday () {
+      this.focus = ''
+    },
     prev() {
       this.$refs.calendar.prev()
     },
     next() {
       this.$refs.calendar.next()
     },
-    showFloorPlan() {
+    showFloorPlan(event) {
       if (String(event.month) === this.$refs.calendar.title.slice(0, 1)) {
         this.$emit('isDatePicked', true, this.focus)
       }

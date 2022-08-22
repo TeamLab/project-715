@@ -3,7 +3,7 @@
     <div class="left-box">
       <div class="left-box-profile">
         <img class="guest-img" src="@/assets/guest-img.png" alt="guest" />
-        <p class="my-name">{{ name[0] }}</p>
+        <p class="my-name">{{ rsvArr[0].name }}</p>
         <div id="select-info">
           <div class="select-info" id="select-rsvinfo">
             <button @click="setMyRsvInfo">예약 정보</button>
@@ -16,13 +16,7 @@
     </div>
     <MyRsvInfo
       v-if="isMyRsvInfo"
-      :rsvname="name"
-      :numofrsvpeople="numofrsvpeople"
-      :rsvdate="rsvdate"
-      :rsvendtime="rsvendtime"
-      :rsvstarttime="rsvstarttime"
-      :tablenumber="tablenumber"
-      :rsvList="rsvList"
+      :rsvArr="rsvArr"
     />
     <PersonalInfo v-if="isPersonalInfo" />
   </div>
@@ -42,13 +36,6 @@ export default {
     return {
       isPersonalInfo: false,
       isMyRsvInfo: true,
-      name: [],
-      numofrsvpeople: [],
-      rsvdate: [],
-      rsvendtime: [],
-      rsvstarttime: [],
-      tablenumber: [],
-      rsvList: [],
       rsvArr: []
     }
   },
@@ -57,43 +44,8 @@ export default {
   mounted() {
     axios.post('/api/users/rsvInfo').then((res) => {
       this.rsvArr = res.data
-      for (var i = 0; i < this.rsvArr.length; i++) {
-        this.name[i] = this.rsvArr[i].name
-        this.numofrsvpeople[i] = this.rsvArr[i].numofrsvpeople
-        this.rsvdate[i] = this.rsvArr[i].rsvdate
-        const dateObj = new Date(this.rsvdate[i])
-        const timestring = dateObj.toLocaleString('ko-KR', {
-          timeZone: 'Asia/Seoul'
-        })
-        this.rsvdate[i] = timestring.slice(0, 12)
-        this.rsvendtime[i] = this.rsvArr[i].rsvendtime
-        this.rsvstarttime[i] = this.rsvArr[i].rsvstarttime
-        this.tablenumber[i] = this.rsvArr[i].tablenumber
-        this.rsvList.push(
-          this.rsvdate[i],
-          this.rsvstarttime[i],
-          this.rsvendtime[i],
-          this.tablenumber[i],
-          this.numofrsvpeople[i]
-        )
-      }
-      console.log(
-        this.rsvList[5],
-        this.rsvList[6],
-        this.rsvList[7],
-        this.rsvList[8],
-        this.rsvList[9]
-      )
+      console.log(this.rsvArr)
     })
-    // .then(() => {
-    //   this.rsvList.push(
-    //     this.rsvdate,
-    //     this.rsvstarttime,
-    //    this.rsvendtime,
-    //    this.tablenumber,
-    //    this.numofrsvpeople
-    //  )
-    //  })
   },
   unmounted() {},
   methods: {
@@ -128,6 +80,7 @@ export default {
 .left-box {
   margin-top: 250px;
   min-width: 225px;
+  margin-right: 30px;
 }
 .my-name {
   text-align: center;
