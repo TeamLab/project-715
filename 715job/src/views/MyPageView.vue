@@ -85,7 +85,6 @@ export default {
 .my-name {
   text-align: center;
   font-size: 30px;
-  text-decoration: underline;
 }
 .guest-img {
   width: 80%;
@@ -107,7 +106,9 @@ export default {
   background-color: rgb(237, 235, 235);
 }
 #select-rsvinfo {
-  border: solid gray;
+  border: solid 2px gray;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 #select-profileinfo > a {
   color: black;
@@ -119,9 +120,11 @@ export default {
   color: blue;
 }
 #select-profileinfo {
-  border-left: solid gray;
-  border-right: solid gray;
-  border-bottom: solid gray;
+  border-left: solid 2px gray;
+  border-right: solid 2px gray;
+  border-bottom: solid 2px gray;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 .right-box {
   background: rgb(255, 255, 255);

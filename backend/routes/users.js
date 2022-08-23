@@ -145,12 +145,11 @@ router.post('/makeRsv', function (req, res) {
 
 //rsvInfo
 router.post('/rsvInfo', function (req, res) {
-  connection.query('SELECT name, rsvdate, rsvstarttime, rsvendtime, tablenumber, numofrsvpeople FROM rsvs WHERE userid="' + loggedinuserid + '"', function (err, row) {
+  connection.query('SELECT name, rsvdate, rsvstarttime, rsvendtime, tablenumber, numofrsvpeople FROM rsvs WHERE userid="' + loggedinuserid + '" AND rsvdate > now() ORDER BY rsvstarttime, rsvendtime, tablenumber', function (err, row) {
     if (err) throw err;
     res.send(row);
   });
 });
-
 
 
 // 기존에 있는 예약 전체 불러오기
@@ -162,7 +161,6 @@ router.post('/existingRsv', function (req, res) {
   connection.query('SELECT rsvstarttime, rsvendtime FROM rsvs WHERE rsvdate="' + existingRsv.rsvdate + '" AND tablenumber="' + existingRsv.tablenumber + '"', function (err, row) {
     if (err) throw err;
     res.send(row)
-    // console.log(row)
   })
 })
 

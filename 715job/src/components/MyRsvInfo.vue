@@ -71,11 +71,11 @@ export default {
   color: white;
 }
 .right-box-rsvinfo-box {
-  height: 40vh;
+  height: 35vh;
   overflow-y: auto;
-  border-left: solid gray;
-  border-right: solid gray;
-  border-bottom: solid gray;
+  border-left: solid 2px gray;
+  border-right: solid 2px gray;
+  border-bottom: solid 2px gray;
 }
 .right-box-detail-rsvinfo {
   display: flex;
@@ -83,7 +83,7 @@ export default {
   align-items: center;
   background-color: rgb(237, 235, 235);
   height: 50px;
-  border-bottom: solid rgb(189, 189, 189);
+  border-bottom: solid 1px rgb(189, 189, 189);
 }
 .right-box-list-rsvinfo {
   border-right: 1px solid black;
@@ -118,7 +118,8 @@ export default {
 .change-delete {
   width: 50px;
   margin: 6px 12px;
-  border: solid gray;
+  border: solid 1px gray;
+  border-radius: 5px;
 }
 .change-delete:hover {
   background-color: rgb(121, 121, 121);
