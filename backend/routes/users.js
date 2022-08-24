@@ -159,7 +159,6 @@ router.post('/deleteRsv', function (req, res) {
 });
 
 
-
 // 기존에 있는 예약 전체 불러오기
 router.post('/existingRsv', function (req, res) {
   const existingRsv = {
@@ -169,7 +168,6 @@ router.post('/existingRsv', function (req, res) {
   connection.query('SELECT rsvstarttime, rsvendtime FROM rsvs WHERE rsvdate="' + existingRsv.rsvdate + '" AND tablenumber="' + existingRsv.tablenumber + '"', function (err, row) {
     if (err) throw err;
     res.send(row)
-    // console.log(row)
   })
 })
 
