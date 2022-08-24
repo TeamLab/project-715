@@ -14,10 +14,7 @@
         </div>
       </div>
     </div>
-    <MyRsvInfo
-      v-if="isMyRsvInfo"
-      :rsvArr="rsvArr"
-    />
+    <MyRsvInfo v-if="isMyRsvInfo" :rsvArr="rsvArr" />
     <PersonalInfo v-if="isPersonalInfo" />
   </div>
 </template>
@@ -44,7 +41,6 @@ export default {
   mounted() {
     axios.post('/api/users/rsvInfo').then((res) => {
       this.rsvArr = res.data
-      console.log(this.rsvArr)
     })
   },
   unmounted() {},
