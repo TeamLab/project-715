@@ -6,13 +6,22 @@
       <ul class="right-box-rsvinfo-table">
         <li class="right-box-rsvinfo">&nbsp;&nbsp;예약 정보</li>
         <div class="right-box-rsvinfo-box">
-          <div v-for="(rsv, index) in this.rsvArr" :key="index" class="right-box-detail-rsvinfo">
+          <div
+            v-for="(rsv, index) in this.rsvArr"
+            :key="index"
+            class="right-box-detail-rsvinfo"
+            style="font-size: small"
+          >
             <div class="right-box-list-rsvinfo-left">
               <div class="right-box-list-rsvinfo info1" width="3%">
                 {{ index + 1 }}
               </div>
               <div class="right-box-list-rsvinfo info2" width="40%">
-                {{ new Date(rsv.rsvdate).toLocaleString('ko-KR', {timeZone: 'Asia/Seoul'}).slice(0, 12) }}
+                {{
+                  new Date(rsv.rsvdate)
+                    .toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' })
+                    .slice(0, 12)
+                }}
               </div>
               <div class="right-box-list-rsvinfo info3" width="40%">
                 {{ rsv.rsvstarttime }} : 00 ~ {{ rsv.rsvendtime }} : 00
@@ -24,7 +33,9 @@
                 {{ rsv.numofrsvpeople }}명
               </div>
             </div>
-            <button class="change-delete">삭제</button>
+            <button class="change-delete" @click="deleteRow(index)">
+              삭제
+            </button>
           </div>
         </div>
       </ul>
@@ -33,6 +44,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   props: {
     rsvArr: Array
@@ -40,10 +52,18 @@ export default {
   data() {
     return {
       name: this.rsvname,
-      numberofrsvpeople: this.numofrsvpeople
+      numberofrsvpeople: this.numofrsvpeople,
+      rsvid: this.rsvArr
     }
   },
-  mounted() {
+  mounted() {},
+  methods: {
+    deleteRow(index) {
+      if (confirm('정말로 삭제하시겠습니까?')) {
+        axios.post('/api/users/deleteRsv', this.rsvid[index])
+        this.$router.go()
+      }
+    }
   }
 }
 </script>
