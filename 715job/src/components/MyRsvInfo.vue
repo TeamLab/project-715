@@ -112,7 +112,7 @@ export default {
 }
 .right-box-list-rsvinfo-left {
   display: flex;
-  width: 80%;
+  width: 75%;
 }
 .right-box-rsvinfo-table {
   padding: 0;
@@ -124,16 +124,16 @@ export default {
   width: 5%;
 }
 .info2 {
-  width: 23.6%;
+  width: 20%;
 }
 .info3 {
-  width: 30.4%;
+  width: 25%;
 }
 .info4 {
   width: 15.9%;
 }
 .info5 {
-  width: 8.6%;
+  width: 7.7%;
 }
 .change-delete {
   width: 50px;

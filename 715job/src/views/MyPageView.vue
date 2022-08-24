@@ -15,7 +15,7 @@
       </div>
     </div>
     <MyRsvInfo v-if="isMyRsvInfo" :rsvArr="rsvArr" />
-    <PersonalInfo v-if="isPersonalInfo" />
+    <PersonalInfo v-if="isPersonalInfo" :name="rsvArr[0].name"/>
   </div>
 </template>
 <script>

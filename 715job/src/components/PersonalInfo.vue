@@ -1,7 +1,7 @@
 <template>
   <div class="right-box">
     <div class="blank-box"></div>
-    <p class="greet-user">황부현님, 안녕하세요</p>
+    <p class="greet-user">{{ name }}님, 안녕하세요</p>
     <div class="psninfo">
       <div class="right-box-psninfo-table">
         <li class="right-box-psninfo">&nbsp;&nbsp;개인 정보</li>
@@ -56,6 +56,9 @@
 
 <script>
 export default {
+  props: {
+    name: String
+  },
   data: () => ({
     items: ['학사', '석사', '교수'],
     emailRule: [
