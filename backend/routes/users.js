@@ -145,7 +145,7 @@ router.post('/makeRsv', function (req, res) {
 
 //rsvInfo
 router.post('/rsvInfo', function (req, res) {
-  connection.query('SELECT rsvid, name, rsvdate, rsvstarttime, rsvendtime, tablenumber, numofrsvpeople FROM rsvs WHERE userid="' + loggedinuserid + '" AND rsvdate > date_sub(now(), interval 1 day) ORDER BY rsvdate, rsvstarttime, rsvendtime, tablenumber', function (err, row) {
+  connection.query('SELECT rsvid, name, rsvdate, rsvstarttime, rsvendtime, tablenumber, numofrsvpeople, rsvtext FROM rsvs WHERE userid="' + loggedinuserid + '" AND rsvdate > date_sub(now(), interval 1 day) ORDER BY rsvdate, rsvstarttime, rsvendtime, tablenumber', function (err, row) {
     if (err) throw err;
     res.send(row);
   });

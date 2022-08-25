@@ -66,7 +66,6 @@ export default {
       v => {
         const replaceV = v.replace(/(\s*)/g, '')
         const pattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/
-        console.log(pattern.test(replaceV))
         return pattern.test(replaceV) || '이메일 형식으로 입력해주세요'
       }
     ]
