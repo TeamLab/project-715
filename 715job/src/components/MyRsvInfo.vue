@@ -91,7 +91,7 @@ export default {
   color: white;
 }
 .right-box-rsvinfo-box {
-  height: 35vh;
+  height: 350px;
   overflow-y: auto;
   border-left: solid 2px gray;
   border-right: solid 2px gray;

@@ -77,7 +77,7 @@ export default {
 .right-box{
   background: rgb(255, 255, 255);
   width:70%;
-  float:right;
+  min-width: 615px;
   padding-top:10%;
 }
 .blank-box{
@@ -91,21 +91,20 @@ export default {
 .right-box-psninfo{
   background-color: rgb(0, 36, 72);
   color:white;
-  width:90%;
   height:50px;
   display: flex;
   align-items: center;
 }
 .right-box-psninfo-box{
   background-color: rgb(255, 255, 255);
-  width:90%;
+
   height:350px;
-  border-left:solid gray;
-  border-right:solid gray;
-  border-bottom:solid gray;
+  border-left:2px solid gray;
+  border-right:2px solid gray;
+  border-bottom:2px solid gray;
 }
 .change-psn-info{
-  border:solid gray;
+  border:1px solid gray;
   padding-left:10px;
   padding-right:10px;
   margin-left: 5%;
