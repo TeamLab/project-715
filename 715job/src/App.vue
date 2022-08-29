@@ -5,7 +5,7 @@
         <div class="d-flex align-center ml-2">
           <v-img
             alt="715Job"
-            class="shrink hidden-sm-and-down"
+            class="shrink"
             contain
             min-width="100"
             src="./assets/715Job.png"

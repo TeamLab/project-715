@@ -26,7 +26,7 @@
           ref="calendar"
           v-model="focus"
           color="#769fcd"
-          @click:date="showFloorPlan($event)"
+          @click:date="[showFloorPlan($event), blockDate($event)]"
         ></v-calendar>
       </v-sheet>
     </v-col>
@@ -65,6 +65,15 @@ export default {
     showFloorPlan(event) {
       if (String(event.month) === this.$refs.calendar.title.slice(0, 1)) {
         this.$emit('isDatePicked', true, this.focus)
+      }
+    },
+    async blockDate(event) {
+      if (event.past === false) {
+        const date = await document.getElementsByClassName('v-calendar-weekly__day v-past')
+        for (let i = 0; i < date.length; i++) {
+          date[i].children[0].children[0].disabled = true
+          date[i].style.backgroundColor = '#f7f7f7'
+        }
       }
     }
   }
