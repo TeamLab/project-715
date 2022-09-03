@@ -1,0 +1,57 @@
+/* All Files Font */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@1,700&display=swap');
+
+@font-face {
+  font-family: 'MICEGothic Bold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+body {
+  overflow-y: auto;
+  overflow-x: scroll;
+}
+
+main {
+  font-family: 'MICEGothic Bold';
+  font-size: large;
+}
+footer {
+  font-size: 15px;
+  font-weight: 200;
+}
+
+/* App.vue */
+.main-background {
+  position: absolute;
+  background-color: #769fcd;
+  width: 100%;
+  /* height: 850px; */
+  height: calc(96px + 80vh);
+  transition-duration: 0.5s;
+}
+.not-main-background {
+  position: absolute;
+  background-color: transparent;
+  width: 100%;
+  height: calc(96px + 80vh);
+  transition-duration: 0.5s;
+}
+.pknusme-link-box {
+  padding: 12px 0px;
+}
+#pknusme-link {
+  color: #bfbfbf;
+}
+#insta-id {
+  color: #bfbfbf;
+  flex-wrap:nowrap;
+  padding: 12px 0px;
+  text-align:center;
+}
+@media screen and (max-width: 650px) {
+  .footer {
+    flex-direction: column;
+  }
+}
